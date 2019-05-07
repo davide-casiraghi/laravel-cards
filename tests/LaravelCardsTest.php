@@ -25,12 +25,18 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_cards_snippet_occurances()
     {
-        $text = "lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[transparent|#34564] text_color=[#212529] container_wrap=[false] #} lorem ipsum";
+        $text = "lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} lorem ipsum";
         $snippet_occurances = LaravelCards::getCardSnippetOccurrences($text);
-        dd($snippet_occurances);
-        //$gallery = new ResponsiveGalleryFactory();
-        //$dbImageDatas = $gallery->getPhotoDatasFromDb();
-        $this->assertStringContainsString($snippet_occurances, 'aa');
+        //dd($snippet_occurances);
+        
+        $this->assertEquals(6, $snippet_occurances[2]);
+        $this->assertEquals('right', $snippet_occurances[4]);
+        $this->assertEquals(3, $snippet_occurances[6]);
+        $this->assertEquals('#345642', $snippet_occurances[8]);
+        $this->assertEquals('#212529', $snippet_occurances[10]);
+        $this->assertEquals('false', $snippet_occurances[12]);
+        
+        
     }
     
 }
