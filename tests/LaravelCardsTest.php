@@ -31,19 +31,19 @@ class LaravelCardsTest extends TestCase
         $matches = LaravelCards::getCardSnippetOccurrences($text);
         //dd($matches);
         
-        $this->assertEquals(6, $matches[0][2]);
-        $this->assertEquals('right', $matches[0][4]);
-        $this->assertEquals(3, $matches[0][6]);
-        $this->assertEquals('#345642', $matches[0][8]);
-        $this->assertEquals('#212529', $matches[0][10]);
-        $this->assertEquals('false', $matches[0][12]);  
+        $this->assertEquals($matches[0][2], 6);
+        $this->assertEquals($matches[0][4], 'right');
+        $this->assertEquals($matches[0][6], 3);
+        $this->assertEquals($matches[0][8], '#345642');
+        $this->assertEquals($matches[0][10], '#212529');
+        $this->assertEquals($matches[0][12], 'false');  
         
-        $this->assertEquals(8, $matches[1][2]);
-        $this->assertEquals('left', $matches[1][4]);
-        $this->assertEquals(2, $matches[1][6]);
-        $this->assertEquals('#FF0044', $matches[1][8]);
-        $this->assertEquals('#f34532', $matches[1][10]);
-        $this->assertEquals('true', $matches[1][12]); 
+        $this->assertEquals($matches[1][2], 8);
+        $this->assertEquals($matches[1][4], 'left');
+        $this->assertEquals($matches[1][6], 2);
+        $this->assertEquals($matches[1][8], '#FF0044');
+        $this->assertEquals($matches[1][10], '#f34532');
+        $this->assertEquals($matches[1][12], 'true'); 
     }
     
     /** @test */
