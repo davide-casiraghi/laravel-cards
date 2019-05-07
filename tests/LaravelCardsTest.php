@@ -57,8 +57,8 @@ class LaravelCardsTest extends TestCase
         
         //dd($parameters);
         
-        $this->assertEquals('background-color: #345642;', $parameters['bkg_color']);
-        $this->assertEquals('col-md-3', $parameters['img_col_size_class']);
+        $this->assertEquals($parameters['bkg_color'],'background-color: #345642;');
+        $this->assertEquals($parameters['img_col_size_class'], 'col-md-3');
         
         
     }
