@@ -22,6 +22,12 @@ class LaravelCardsTest extends TestCase
         ];
     }
     
-    
+    /** @test */
+    public function it_gets_photos_from_db()
+    {
+        $gallery = new ResponsiveGalleryFactory();
+        $dbImageDatas = $gallery->getPhotoDatasFromDb();
+        $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, 'Photo description');
+    }
     
 }
