@@ -54,13 +54,10 @@ class LaravelCardsTest extends TestCase
         ";
         $matches = LaravelCards::getCardSnippetOccurrences($text);
         $parameters = LaravelCards::getParameters($matches[0]);
-        
         //dd($parameters);
         
         $this->assertEquals($parameters['bkg_color'],'background-color: #345642;');
         $this->assertEquals($parameters['img_col_size_class'], 'col-md-3');
-        
-        
     }
     
     
