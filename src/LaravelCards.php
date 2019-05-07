@@ -49,7 +49,7 @@ class LaravelCards
                 \h*\#}/x';
 
         if (preg_match_all($re, $text, $matches, PREG_SET_ORDER, 0)) {
-            return $matches[0];
+            return $matches;
         } else {
             return;
         }
