@@ -34,7 +34,7 @@ class LaravelCards
     /**
      *  Find the card snippet occurances in the text.
      *  @param array $text     The text where to find the card snippets
-     *  @return array $ret     The matches
+     *  @return array $matches     The matches
      **/
     public function getCardSnippetOccurrences($text)
     {
@@ -42,7 +42,10 @@ class LaravelCards
                 \h+card
                 \h+(post_id|img_alignment|img_col_size|bkg_color|text_color|container_wrap)=\[([^]]*)]
                 \h+((?1))=\[([^]]*)]
+                \h+((?1))=\[([^]]*)] 
                 \h+((?1))=\[([^]]*)]
+                \h+((?1))=\[([^]]*)] 
+                \h+((?1))=\[([^]]*)] 
                 \h*\#}/x';
 
         if (preg_match_all($re, $text, $matches, PREG_SET_ORDER, 0)) {
