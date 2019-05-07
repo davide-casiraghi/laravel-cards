@@ -23,11 +23,13 @@ class LaravelCardsTest extends TestCase
     }
     
     /** @test */
-    public function it_gets_photos_from_db()
+    public function it_gets_cards_snippet_occurances()
     {
-        $gallery = new ResponsiveGalleryFactory();
-        $dbImageDatas = $gallery->getPhotoDatasFromDb();
-        $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, 'Photo description');
+        $text = "lorem ipsum";
+        $snippet_occurances = LaravelCards::getCardSnippetOccurrences($text);
+        //$gallery = new ResponsiveGalleryFactory();
+        //$dbImageDatas = $gallery->getPhotoDatasFromDb();
+        $this->assertStringContainsString($snippet_occurances, 'aa');
     }
     
 }
