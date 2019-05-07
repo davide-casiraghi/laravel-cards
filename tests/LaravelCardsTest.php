@@ -53,11 +53,13 @@ class LaravelCardsTest extends TestCase
                  Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
         ";
         $matches = LaravelCards::getCardSnippetOccurrences($text);
-        $parameters = LaravelCards::getParameters($matches);
+        $parameters = LaravelCards::getParameters($matches[0]);
         
-        dd($parameters);
+        //dd($parameters);
         
-        //$this->assertEquals(6, $matches[0][2]);
+        $this->assertEquals('background-color: #345642;', $parameters['bkg_color']);
+        $this->assertEquals('col-md-3', $parameters['img_col_size_class']);
+        
         
     }
     

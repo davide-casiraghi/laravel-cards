@@ -87,15 +87,15 @@ class LaravelCards
         $imageAlignment = $matches[4];
 
         switch ($imageAlignment) {
-                     case 'left':
-                         $ret['img_col_order_class'] = 'order-md-1';
-                         $ret['text_col_order_class'] = 'order-md-2';
-                         break;
-                     case 'right':
-                         $ret['img_col_order_class'] = 'order-md-2';
-                         $ret['text_col_order_class'] = 'order-md-1';
-                         break;
-                 }
+             case 'left':
+                 $ret['img_col_order_class'] = 'order-md-1';
+                 $ret['text_col_order_class'] = 'order-md-2';
+                 break;
+             case 'right':
+                 $ret['img_col_order_class'] = 'order-md-2';
+                 $ret['text_col_order_class'] = 'order-md-1';
+                 break;
+         }
 
         //dump($ret);
 
