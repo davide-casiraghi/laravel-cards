@@ -1,13 +1,13 @@
 <?php
 
-namespace DavideCasiraghi\LaravelCards;
+namespace DavideCasiraghi\LaravelCards\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \DavideCasiraghi\LaravelCards\Skeleton\SkeletonClass
  */
-class LaravelCardsFacade extends Facade
+class LaravelCards extends Facade
 {
     /**
      * Get the registered name of the component.
