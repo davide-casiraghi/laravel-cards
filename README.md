@@ -11,6 +11,23 @@
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
+The library replace all the occurances of this snippet
+```
+{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}
+```
+With the HTML code of a responsive card made by text on one side and an image on the other.
+```html
+<div class="accordion">
+    <div class="accordion-header collapsed" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false">
+        <div class="icon caret-svg"></div>
+        Title First Slide
+    </div>
+    <div class="accordion-body collapse" id="collapse_1" style="">
+        <div class="accordion-body-content">This is the first slide. </div>
+    </div>
+</div>
+```
+
 ## Installation
 
 You can install the package via composer:
