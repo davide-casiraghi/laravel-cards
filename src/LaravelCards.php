@@ -17,7 +17,7 @@ class LaravelCards
 
         //$image_dir_url = "/storage/images";
 
-        $postData = app('App\Http\Controllers\PostController')->postdata($parameters['post_id']);
+        $postData = app('App\Http\Controllers\PostController')->getPost($parameters['post_id']);
         $ret['post_title'] = (! empty($postData->title)) ? $postData->title : $postData->translate('en')->title;
         $ret['post_body'] = (! empty($postData->body)) ? $postData->body : $postData->translate('en')->body;
 
