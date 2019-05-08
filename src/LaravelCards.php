@@ -11,10 +11,11 @@ class LaravelCards
         $this->postModelConfig = config('laravel-cards.models.post');
     }
 
-    // **********************************************************************
+    /**************************************************************************/
 
     /**
-     *  Provide the post data array (post_title, post_body, post_image).
+     *  Provide the post data array (post_title, post_body, post_image)
+     *
      *  @param int $postId
      *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $ret
      **/
@@ -26,12 +27,13 @@ class LaravelCards
         return $ret;
     }
 
-    /************************************************************************/
+    /**************************************************************************/
 
     /**
-     *  Find the card snippet occurances in the text.
-     *  @param array $text     The text where to find the card snippets
-     *  @return array $matches     The matches
+     *  Find the card snippet occurances in the text
+     *
+     *  @param string $text  
+     *  @return array $matches
      **/
     public function getCardSnippetOccurrences($text)
     {
@@ -52,12 +54,13 @@ class LaravelCards
         }
     }
 
-    // **********************************************************************
+    /**************************************************************************/
 
     /**
-     *  Returns the plugin parameters.
-     *  @param array $matches       result from the regular expression on the string from the article
-     *  @return array $ret          the array containing the parameters
+     *  Returns the plugin parameters
+     *
+     *  @param array $matches      
+     *  @return array $ret
      **/
     public function getParameters($matches)
     {
@@ -99,10 +102,11 @@ class LaravelCards
         return $ret;
     }
 
-    // **********************************************************************
+    /**************************************************************************/
 
     /**
-     *  Prepare the card HTML.
+     *  Prepare the card HTML
+     *
      *  @param array $parameters
      *  @param \DavideCasiraghi\LaravelCards\Models\Post $postData
      *
@@ -131,6 +135,15 @@ class LaravelCards
         return $ret;
     }
 
+    /**************************************************************************/
+    
+    /**
+     *  Return the same text with the cards HTML replaced 
+     *  where the token strings has been found 
+     *
+     *  @param string $text
+     *  @return string $ret
+     **/
     public function replace_card_strings_with_template($text)
     {
         $matches = self::getCardSnippetOccurrences($text);
@@ -141,9 +154,9 @@ class LaravelCards
             $cardHtml = self::prepareCardHtml($parameters, $post);
 
             // Substitute the card html to the token that has been found
-            $text = str_replace($parameters['token'], $cardHtml, $postBody);
+            $ret = str_replace($parameters['token'], $cardHtml, $postBody);
         }
 
-        return $text;
+        return $ret;
     }
 }
