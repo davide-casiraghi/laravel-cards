@@ -15,7 +15,7 @@ The library replace all the occurances of this snippet
 ```
 {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}
 ```
-With the some HTML code of a responsive card made by text on one side and an image on the other.
+With the some HTML code of a responsive card made by text on one side and an image on the other.  
 This code uses **bootstrap 4**.
 ```html
 <div class='row featurette' style='background-color: #345642;color: #212529;'>
