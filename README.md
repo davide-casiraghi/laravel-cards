@@ -36,6 +36,16 @@ You can install the package via composer:
 composer require davide-casiraghi/laravel-cards
 ```
 
+### Publish all the vendor files
+```php artisan vendor:publish --force```
+
+### Configuration
+
+You can add the configuration parameters about your content model in the configuration file.
+```bash
+/config/laravel-cards.php
+```
+
 ## Usage
 
 ``` php
