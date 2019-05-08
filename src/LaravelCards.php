@@ -148,7 +148,7 @@ class LaravelCards
      *  @param string $text
      *  @return string $ret
      **/
-    public function replace_card_strings_with_template($text)
+    public function replace_card_snippets_with_template($text)
     {
         $matches = self::getCardSnippetOccurrences($text);
 
