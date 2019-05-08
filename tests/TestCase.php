@@ -35,7 +35,6 @@ abstract class TestCase extends BaseTestCase
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadLaravelMigrations(['--database' => 'testbench']);
         $this->withFactories(__DIR__.'/database/factories');
-        
     }
 
     protected function getPackageProviders($app)
@@ -54,5 +53,4 @@ abstract class TestCase extends BaseTestCase
             //'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         ];
     }
-
 }

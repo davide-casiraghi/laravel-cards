@@ -16,7 +16,7 @@ $factory->define(DavideCasiraghi\LaravelCards\Models\Post::class, function (Fake
     return [
         'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'body' => $faker->paragraph,
-        'image' => "testImage.jpg",
+        'image' => 'testImage.jpg',
         'image_alt' => $faker->sentence($nbWords = 5, $variableNbWords = true),
     ];
 });
