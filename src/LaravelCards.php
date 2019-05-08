@@ -114,7 +114,7 @@ class LaravelCards
      **/
     public function prepareCardHtml($parameters, $post)
     {
-        if (!is_null($post)){
+        if (! is_null($post)) {
             $ret = "<div class='row featurette' style='".$parameters['bkg_color'].$parameters['text_color']."'>";
             if ($parameters['container_wrap']) {
                 $ret .= "<div class='container'>";
@@ -132,9 +132,8 @@ class LaravelCards
                 $ret .= '</div>';
             }
             $ret .= '</div>';
-        }
-        else{
-            $ret = "<div class='alert alert-warning' role='alert'>The post with id ".$parameters['post_id']." has not been found.</div>";
+        } else {
+            $ret = "<div class='alert alert-warning' role='alert'>The post with id ".$parameters['post_id'].' has not been found.</div>';
         }
 
         return $ret;
@@ -157,7 +156,7 @@ class LaravelCards
             $parameters = self::getParameters($single_gallery_matches);
             $post = self::getPost($parameters['post_id']);
             $cardHtml = self::prepareCardHtml($parameters, $post);
-            
+
             // Substitute the card html to the token that has been found
             $text = str_replace($parameters['token'], $cardHtml, $text);
         }
