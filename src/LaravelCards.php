@@ -115,7 +115,7 @@ class LaravelCards
     public function prepareCardHtml($parameters, $post)
     {
         if (! is_null($post)) {
-            $ret = "<div class='row featurette' style='".$parameters['bkg_color'].$parameters['text_color']."'>";
+            $ret = "<div class='row featurette' style='".$parameters['bkg_color']." ".$parameters['text_color']."'>";
             if ($parameters['container_wrap']) {
                 $ret .= "<div class='container'>";
             }
