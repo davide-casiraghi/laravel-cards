@@ -22,8 +22,8 @@ class LaravelCards
     public function getPost($parameters)
     {
         $postModel = $this->postModelConfig['class'];
-        $ret = $postModel::where('id', $parameters['post_id'])->get();
-    
+        $ret = $postModel::where('id', $parameters['post_id'])->first();
+
         return $ret;
     }
 
