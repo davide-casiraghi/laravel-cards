@@ -2,7 +2,6 @@
 
 namespace DavideCasiraghi\LaravelCards\Models;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -18,10 +17,8 @@ class Post extends Model
     /***************************************************************************/
 
     protected $fillable = [
-        'title', 'body','image','image_alt'
+        'title', 'body', 'image', 'image_alt',
     ];
 
     /***************************************************************************/
-
-
 }
