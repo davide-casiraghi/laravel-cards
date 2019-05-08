@@ -113,12 +113,14 @@ class LaravelCardsTest extends TestCase
         
         $text = 'Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
                  Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+                 Lorem ipsum {# card post_id=[2] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
         ';
         
         $text = LaravelCards::replace_card_strings_with_template($text);
                 
         $this->assertContains("<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-3 order-md-2'></div></div>",$text);
         $this->assertContains("<div class='row featurette' style='background-color: #FF0044;color: #f34532;'><div class='container'><div class='text col-md-10 my-auto px-4 order-md-2'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-2 order-md-1'></div></div></div>",$text);    
+        $this->assertContains("Post with id 2 not found",$text); 
     }
     
 }
