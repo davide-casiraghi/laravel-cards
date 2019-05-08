@@ -112,7 +112,7 @@ class LaravelCards
      *
      *  @return string $ret
      **/
-    public function prepareCardHtml($parameters, $post)
+    public static function prepareCardHtml($parameters, $post)
     {
         if (! is_null($post)) {
             $ret = "<div class='row featurette' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
@@ -150,12 +150,12 @@ class LaravelCards
      **/
     public function replace_card_snippets_with_template($text)
     {
-        $matches = LaravelCards::getCardSnippetOccurrences($text);
+        $matches = self::getCardSnippetOccurrences($text);
 
         foreach ($matches as $key => $single_gallery_matches) {
-            $parameters = LaravelCards::getParameters($single_gallery_matches);
-            $post = LaravelCards::getPost($parameters['post_id']);
-            $cardHtml = LaravelCards::prepareCardHtml($parameters, $post);
+            $parameters = self::getParameters($single_gallery_matches);
+            $post = self::getPost($parameters['post_id']);
+            $cardHtml = self::prepareCardHtml($parameters, $post);
 
             // Substitute the card html to the token that has been found
             $text = str_replace($parameters['token'], $cardHtml, $text);
