@@ -84,14 +84,14 @@ class LaravelCardsTest extends TestCase
     }
 
     /** @test */
-    /*public function it_replace_multiple_card_strings_with_a_card_template()
+    public function it_replace_multiple_card_strings_with_a_card_template()
     {
-        $post = factory(Post::class)->create([
+        $post_1 = factory(Post::class)->create([
             'id' => 6,
             'title' => 'test title',
         ]);
 
-        $post = factory(Post::class)->create([
+        $post_2 = factory(Post::class)->create([
             'id' => 8,
             'title' => 'test title 2',
         ]);
@@ -102,9 +102,9 @@ class LaravelCardsTest extends TestCase
 
         $text = LaravelCards::replace_card_strings_with_template($text);
 
-        $this->assertContains("<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>test title</h2><div class='lead mb-4'>Et officia est ratione unde aperiam. Praesentium libero iste unde quisquam voluptate ut aut.</div></div><div class='image col-md-3 order-md-2'></div></div>", $text);
-        //$this->assertContains("<div class='row featurette' style='background-color: #FF0044;color: #f34532;'><div class='container'><div class='text col-md-10 my-auto px-4 order-md-2'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-2 order-md-1'></div></div></div>", $text);
-    }*/
+        $this->assertContains("<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>".$post_1['title']."</h2><div class='lead mb-4'>".$post_1['body']."</div></div><div class='image col-md-3 order-md-2'></div></div>", $text);
+        $this->assertContains("<div class='row featurette' style='background-color: #FF0044;color: #f34532;'><div class='container'><div class='text col-md-10 my-auto px-4 order-md-2'><h2 class='featurette-heading mt-5'>".$post_2['title']."</h2><div class='lead mb-4'>".$post_2['body']."</div></div><div class='image col-md-2 order-md-1'></div></div></div>", $text);
+    }
 
     /** @test */
     public function it_replace_a_card_string_with_alert_if_post_not_found()
