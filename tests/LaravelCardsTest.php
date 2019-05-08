@@ -71,31 +71,30 @@ class LaravelCardsTest extends TestCase
         $postData = LaravelCards::getPost($post['id']);
         $this->assertEquals($postData['title'], 'test title');
     }
-    
+
     /** @test */
     public function it_prepare_the_card_html()
     {
         $parameters = [
-            "token" => "{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}",
-            "post_id" => "6",
-            "img_col_size_class" => "col-md-3",
-            "text_col_size_class" => "col-md-9",
-            "bkg_color" => "background-color: #345642;",
-            "text_color" => "color: #212529;",
-            "container_wrap" => 0,
-            "img_col_order_class" => "order-md-2",
-            "text_col_order_class" => "order-md-1",
+            'token' => '{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}',
+            'post_id' => '6',
+            'img_col_size_class' => 'col-md-3',
+            'text_col_size_class' => 'col-md-9',
+            'bkg_color' => 'background-color: #345642;',
+            'text_color' => 'color: #212529;',
+            'container_wrap' => 0,
+            'img_col_order_class' => 'order-md-2',
+            'text_col_order_class' => 'order-md-1',
         ];
-        
+
         $post = factory(Post::class)->create([
             'id' => 6,
             'title' => 'test title',
         ]);
-            
+
         $postData = LaravelCards::getPost($post['id']);
         $cardHtml = LaravelCards::prepareCardHtml($parameters, $postData);
-        
+
         $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-3 order-md-2'></div></div>");
     }
-    
 }
