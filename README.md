@@ -54,9 +54,7 @@ $text = LaravelCards::replace_card_snippets_with_template($text);
 
 ### Testing
 
-``` bash
-./vendor/bin/phpunit --coverage-html=html
-```
+``` bash ./vendor/bin/phpunit --coverage-html=html ```
 
 ### Changelog
 
