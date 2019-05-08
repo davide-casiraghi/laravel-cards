@@ -5,11 +5,11 @@ namespace DavideCasiraghi\LaravelCards;
 class LaravelCards
 {
     
-    protected $postModelConfig;
+    protected $postModelConfig = [];
 
     public function __construct()
     {
-        $this->$postModelConfig = config('laravel-cards.models.post');
+        $this->postModelConfig = config('laravel-cards.models.post');
     }
     
     // **********************************************************************
@@ -21,19 +21,9 @@ class LaravelCards
      **/
     public function getPost($parameters)
     {
-        //$postData = app('App\Http\Controllers\PostController')->getPost($parameters['post_id']);
-        
         $postModel = $this->$postModelConfig['class'];
         $ret = $postModel::where('id', $parameters['post_id'])->get();
     
-        /*$ret = [];
-        $ret['title'] = (! empty($postData->title)) ? $postData->title : $postData->translate('en')->title;
-        $ret['body'] = (! empty($postData->body)) ? $postData->body : $postData->translate('en')->body;
-
-        $ret['image_src'] = (! empty($postData->title)) ? $postData->introimage : '';
-        $ret['image_alt'] = (! empty($postData->title)) ? $postData->introimage_alt : '';*/
-        
-
         return $ret;
     }
 
