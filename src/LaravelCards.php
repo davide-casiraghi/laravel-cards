@@ -108,29 +108,34 @@ class LaravelCards
      *  Prepare the card HTML.
      *
      *  @param array $parameters
-     *  @param \DavideCasiraghi\LaravelCards\Models\Post $postData
+     *  @param \DavideCasiraghi\LaravelCards\Models\Post $post
      *
      *  @return string $ret
      **/
-    public function prepareCardHtml($parameters, $postData)
+    public function prepareCardHtml($parameters, $post)
     {
-        $ret = "<div class='row featurette' style='".$parameters['bkg_color'].$parameters['text_color']."'>";
-        if ($parameters['container_wrap']) {
-            $ret .= "<div class='container'>";
-        }
-        $ret .= "<div class='text ".$parameters['text_col_size_class'].' my-auto px-4 '.$parameters['text_col_order_class']."'>";
-        $ret .= "<h2 class='featurette-heading mt-5'>".$postData['post_title'].'</h2>';
-        $ret .= "<div class='lead mb-4'>".$postData['post_body'].'</div>';
-        $ret .= '</div>';
-        $ret .= "<div class='image ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'>";
-        if (! empty($postData['post_image_src'])) {
-            $ret .= "<img class='featurette-image img-fluid mx-auto' src='".$postData['post_image_src']."' alt='".$postData['post_image_alt']."'>";
-        }
-        $ret .= '</div>';
-        if ($parameters['container_wrap']) {
+        if (!is_null($post)){
+            $ret = "<div class='row featurette' style='".$parameters['bkg_color'].$parameters['text_color']."'>";
+            if ($parameters['container_wrap']) {
+                $ret .= "<div class='container'>";
+            }
+            $ret .= "<div class='text ".$parameters['text_col_size_class'].' my-auto px-4 '.$parameters['text_col_order_class']."'>";
+            $ret .= "<h2 class='featurette-heading mt-5'>".$post['post_title'].'</h2>';
+            $ret .= "<div class='lead mb-4'>".$post['post_body'].'</div>';
+            $ret .= '</div>';
+            $ret .= "<div class='image ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'>";
+            if (! empty($post['post_image_src'])) {
+                $ret .= "<img class='featurette-image img-fluid mx-auto' src='".$post['post_image_src']."' alt='".$post['post_image_alt']."'>";
+            }
+            $ret .= '</div>';
+            if ($parameters['container_wrap']) {
+                $ret .= '</div>';
+            }
             $ret .= '</div>';
         }
-        $ret .= '</div>';
+        else{
+            $ret = "<div class='alert alert-warning' role='alert'>The post with id ".$parameters['post_id']." has not been found.</div>";
+        }
 
         return $ret;
     }
@@ -152,7 +157,7 @@ class LaravelCards
             $parameters = self::getParameters($single_gallery_matches);
             $post = self::getPost($parameters['post_id']);
             $cardHtml = self::prepareCardHtml($parameters, $post);
-
+            
             // Substitute the card html to the token that has been found
             $text = str_replace($parameters['token'], $cardHtml, $text);
         }
