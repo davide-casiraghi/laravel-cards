@@ -48,7 +48,7 @@ You can add the configuration parameters about your content model in the configu
 
 ## Usage
 
-``` bash
+``` php
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;  
 
 $text = LaravelCards::replace_card_snippets_with_template($text);
