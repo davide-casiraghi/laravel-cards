@@ -9,7 +9,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/davide-casiraghi/laravel-cards.svg)](https://github.com/davide-casiraghi/laravel-cards) 
 
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This Laravel package show a responsive card made by text on one side of the page and an image on the other.
 
 The library replace all the occurances of this snippet
 ```
