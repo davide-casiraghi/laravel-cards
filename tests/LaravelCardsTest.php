@@ -30,6 +30,15 @@ class LaravelCardsTest extends TestCase
         $this->assertEquals($matches[1][10], '#f34532');
         $this->assertEquals($matches[1][12], 'true');
     }
+    
+    /** @test */
+    public function it_gets_no_cards_snippet_occurances()
+    {
+        $text = 'Lorem ipsum  sid amet. ';
+        $matches = LaravelCards::getCardSnippetOccurrences($text);
+        
+        $this->assertSame($matches, null);
+    }
 
     /** @test */
     public function it_gets_the_parameter_array()
