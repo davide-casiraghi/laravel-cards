@@ -23,6 +23,10 @@ class LaravelCardsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('laravel-cards.php'),
             ], 'config');
+            
+            $this->publishes([
+                __DIR__.'/../resources/assets/sass' => resource_path('sass/vendor/laravel-responsive-gallery/'),
+            ], 'sass');
 
             // Publishing the views.
             /*$this->publishes([
