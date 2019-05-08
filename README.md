@@ -22,7 +22,9 @@ composer require davide-casiraghi/laravel-cards
 ## Usage
 
 ``` php
-$text = replace_card_strings_with_template(text);
+use DavideCasiraghi\LaravelCards\Facades\LaravelCards;  
+
+$text = LaravelCards::replace_card_strings_with_template(text);
 ```
 
 ### Testing
