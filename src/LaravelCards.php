@@ -154,9 +154,11 @@ class LaravelCards
             $cardHtml = self::prepareCardHtml($parameters, $post);
 
             // Substitute the card html to the token that has been found
-            $ret = str_replace($parameters['token'], $cardHtml, $text);
+            $text = str_replace($parameters['token'], $cardHtml, $text);
         }
-
+        
+        $ret = $text;
+        
         return $ret;
     }
 }
