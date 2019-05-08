@@ -17,14 +17,13 @@ The library replace all the occurances of this snippet
 ```
 With the HTML code of a responsive card made by text on one side and an image on the other.
 ```html
-<div class="accordion">
-    <div class="accordion-header collapsed" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false">
-        <div class="icon caret-svg"></div>
-        Title First Slide
-    </div>
-    <div class="accordion-body collapse" id="collapse_1" style="">
-        <div class="accordion-body-content">This is the first slide. </div>
-    </div>
+<div class='row featurette' style='background-color: #345642;color: #212529;'>
+	<div class='text col-md-9 my-auto px-4 order-md-1'>
+		<h2 class='featurette-heading mt-5'>".$post_1['title']."</h2>
+		<div class='lead mb-4'>".$post_1['body']."</div>
+	</div>
+<div class='image col-md-3 order-md-2'></div>
+
 </div>
 ```
 
