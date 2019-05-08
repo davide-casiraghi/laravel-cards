@@ -1,9 +1,5 @@
 # Laravel Cards
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/davide-casiraghi/laravel-cards.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-cards)
-[![Build Status](https://img.shields.io/travis/davide-casiraghi/laravel-cards/master.svg?style=flat-square)](https://travis-ci.org/davide-casiraghi/laravel-cards)
-
-
 [![Latest Stable Version on Packagist](https://img.shields.io/packagist/v/davide-casiraghi/laravel-cards.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-cards)
 [![StyleCI](https://styleci.io/repos/185434966/shield?style=flat-square)](https://styleci.io/repos/185434966)
 <a href="https://travis-ci.org/davide-casiraghi/laravel-cards"><img src="https://travis-ci.org/davide-casiraghi/laravel-cards.svg" alt="Build Status"></a>
