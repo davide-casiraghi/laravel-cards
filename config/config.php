@@ -9,5 +9,7 @@ return [
             'class' => 'App\Post',
             'title' => 'title',
             'text' => 'body',
+            'image' => 'image',
+            'image_alt' => 'alt',
     ]
 ];

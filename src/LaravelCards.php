@@ -5,6 +5,13 @@ namespace DavideCasiraghi\LaravelCards;
 class LaravelCards
 {
     
+    protected $postModelConfig;
+
+    public function __construct($options = array())
+    {
+        $this->$postModelConfig = $options['models']['post'];
+    }
+    
     // **********************************************************************
 
     /**
@@ -12,19 +19,20 @@ class LaravelCards
      *  @param array $file_name        the file name
      *  @return array $ret             the extension
      **/
-    public function getPostData($parameters)
+    public function getPost($parameters)
     {
+        //$postData = app('App\Http\Controllers\PostController')->getPost($parameters['post_id']);
+        
+        $postModel = $this->$postModelConfig['class'];
+        $ret = $postModel::where('id', $parameters['post_id'])->get();
+    
+        /*$ret = [];
+        $ret['title'] = (! empty($postData->title)) ? $postData->title : $postData->translate('en')->title;
+        $ret['body'] = (! empty($postData->body)) ? $postData->body : $postData->translate('en')->body;
 
-        //$image_dir_url = "/storage/images";
-
-        $postData = app('App\Http\Controllers\PostController')->getPost($parameters['post_id']);
-        $ret['post_title'] = (! empty($postData->title)) ? $postData->title : $postData->translate('en')->title;
-        $ret['post_body'] = (! empty($postData->body)) ? $postData->body : $postData->translate('en')->body;
-
-        if ($postData->introimage) {
-            $ret['post_image_src'] = $postData->introimage;
-            $ret['post_image_alt'] = $postData->introimage_alt;
-        }
+        $ret['image_src'] = (! empty($postData->title)) ? $postData->introimage : '';
+        $ret['image_alt'] = (! empty($postData->title)) ? $postData->introimage_alt : '';*/
+        
 
         return $ret;
     }
