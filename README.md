@@ -32,9 +32,7 @@ This code uses **bootstrap 4**.
 
 You can install the package via composer:
 
-```bash
-composer require davide-casiraghi/laravel-cards
-```
+```bash composer require davide-casiraghi/laravel-cards ```
 
 ### Publish all the vendor files
 ```php artisan vendor:publish --force```
