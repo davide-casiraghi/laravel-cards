@@ -44,7 +44,7 @@ You can add the configuration parameters about your content model in the configu
 /config/laravel-cards.php
 ```
 
-### Import the _responsive-quote.scss file in /resources/scss/app.scss
+### Import the _card.scss file in /resources/scss/app.scss
 ```php
 @import 'vendor/laravel-cards/card';
 ```
