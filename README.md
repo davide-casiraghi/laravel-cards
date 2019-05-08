@@ -22,7 +22,7 @@ composer require davide-casiraghi/laravel-cards
 ## Usage
 
 ``` php
-// Usage description here
+$text = replace_card_strings_with_template(text);
 ```
 
 ### Testing
