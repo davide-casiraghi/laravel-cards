@@ -93,14 +93,9 @@ class LaravelCardsTest extends TestCase
         ]);
             
         $postData = LaravelCards::getPost($post['id']);
-        
         $cardHtml = LaravelCards::prepareCardHtml($parameters, $postData);
         
         $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-3 order-md-2'></div></div>");
-        
     }
-    
-    
-    
     
 }
