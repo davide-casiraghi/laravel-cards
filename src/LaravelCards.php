@@ -16,7 +16,7 @@ class LaravelCards
     /**
      *  Provide the post data array (post_title, post_body, post_image).
      *  @param int $postId
-     *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $post
+     *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $ret
      **/
     public function getPost($postId)
     {
@@ -103,9 +103,10 @@ class LaravelCards
 
     /**
      *  Prepare the card HTML.
-     *  @param array $parameters        parameters array [post_id, img_alignment, img_col_size_class, text_col_size_class]
+     *  @param array $parameters  
+     *  @param \DavideCasiraghi\LaravelCards\Models\Post $postData        
      *
-     *  @return string $ret             the HTML to print on screen
+     *  @return string $ret            
      **/
     public function prepareCardHtml($parameters, $postData)
     {
@@ -129,4 +130,22 @@ class LaravelCards
 
         return $ret;
     }
+    
+    public function replace_card_strings_with_template($text)
+    {
+        $matches = LaravelCards::getCardSnippetOccurrences($text);
+        
+        foreach ($matches as $key => $single_gallery_matches) {
+            $parameters = LaravelCards::getParameters($single_gallery_matches);
+            $post = LaravelCards::getPost($post['id']);
+            $cardHtml = LaravelCards::prepareCardHtml($parameters, $post);
+            
+            // Substitute the card html to the token that has been found 
+            $text = str_replace($parameters['token'], $cardHtml, $postBody);
+        }
+        
+        return $text;
+    }
+    
+    
 }
