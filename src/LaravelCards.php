@@ -7,9 +7,9 @@ class LaravelCards
     
     protected $postModelConfig;
 
-    public function __construct($options = array())
+    public function __construct()
     {
-        $this->$postModelConfig = $options['models']['post'];
+        $this->$postModelConfig = config('laravel-cards.models.post');
     }
     
     // **********************************************************************

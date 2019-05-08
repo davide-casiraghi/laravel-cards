@@ -6,10 +6,11 @@
 return [
     'models' => [
         'post' => [
-            'class' => 'App\Post',
+            'class' => 'DavideCasiraghi\LaravelCards\Models\Post',
             'title' => 'title',
             'text' => 'body',
             'image' => 'image',
             'image_alt' => 'alt',
+        ]
     ]
 ];

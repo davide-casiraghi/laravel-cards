@@ -61,7 +61,7 @@ class LaravelCardsTest extends TestCase
     }
     
     /** @test */
-    public function it_gets_the_post_data()
+    /*public function it_gets_the_post_data()
     {
         $text = "Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
                  Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
@@ -71,9 +71,8 @@ class LaravelCardsTest extends TestCase
         $postData = LaravelCards::getPostData($parameters);
         dd($postData);
         
-        //$this->assertEquals($parameters['bkg_color'],'background-color: #345642;');
-        //$this->assertEquals($parameters['img_col_size_class'], 'col-md-3');
-    }
+        
+    }*/
     
     
     
