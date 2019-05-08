@@ -40,7 +40,7 @@ composer require davide-casiraghi/laravel-cards
 ``` php
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;  
 
-$text = LaravelCards::replace_card_snippet_with_template($text);
+$text = LaravelCards::replace_card_snippets_with_template($text);
 ```
 
 ### Testing
