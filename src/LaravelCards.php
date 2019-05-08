@@ -22,7 +22,7 @@ class LaravelCards
     public static function getPost($postId)
     {
         //$postModel = $this->postModelConfig['class'];
-        $postModel =  config('laravel-cards.models.post.class');
+        $postModel = config('laravel-cards.models.post.class');
         $ret = $postModel::where('id', $postId)->first();
 
         return $ret;
