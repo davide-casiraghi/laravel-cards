@@ -4,7 +4,6 @@ namespace DavideCasiraghi\LaravelCards\Tests;
 
 use DavideCasiraghi\LaravelCards\Models\Post;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
-use DavideCasiraghi\LaravelCards\LaravelCardsServiceProvider;
 
 class LaravelCardsTest extends TestCase
 {
