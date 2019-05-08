@@ -2,7 +2,6 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Orchestra\Testbench\TestCase;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 use DavideCasiraghi\LaravelCards\LaravelCardsServiceProvider;
 use DavideCasiraghi\LaravelCards\Models\Post;

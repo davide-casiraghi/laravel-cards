@@ -13,9 +13,10 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(DavideCasiraghi\LaravelCards\Models\Post::class, function (Faker $faker) {
-    
     return [
         'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'text' => $faker->paragraph,
+        'body' => $faker->paragraph,
+        'image' => "aaa",
+        'image_alt' => $faker->sentence($nbWords = 5, $variableNbWords = true),
     ];
 });
