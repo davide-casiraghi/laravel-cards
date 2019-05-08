@@ -19,7 +19,7 @@ class LaravelCards
      *  @param int $postId
      *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $ret
      **/
-    public function getPost($postId)
+    public static function getPost($postId)
     {
         $postModel = $this->postModelConfig['class'];
         $ret = $postModel::where('id', $postId)->first();
@@ -35,7 +35,7 @@ class LaravelCards
      *  @param string $text
      *  @return array $matches
      **/
-    public function getCardSnippetOccurrences($text)
+    public static function getCardSnippetOccurrences($text)
     {
         $re = '/{\#
                 \h+card
@@ -62,7 +62,7 @@ class LaravelCards
      *  @param array $matches
      *  @return array $ret
      **/
-    public function getParameters($matches)
+    public static function getParameters($matches)
     {
         $ret = [];
 
