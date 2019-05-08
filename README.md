@@ -1,4 +1,4 @@
-# Very short description of the package
+# Laravel Cards
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/davide-casiraghi/laravel-cards.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-cards)
 [![Build Status](https://img.shields.io/travis/davide-casiraghi/laravel-cards/master.svg?style=flat-square)](https://travis-ci.org/davide-casiraghi/laravel-cards)
