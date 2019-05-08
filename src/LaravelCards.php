@@ -16,13 +16,13 @@ class LaravelCards
 
     /**
      *  Provide the post data array (post_title, post_body, post_image).
-     *  @param array $file_name        the file name
-     *  @return array $ret             the extension
+     *  @param int $postId
+     *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $post
      **/
-    public function getPost($parameters)
+    public function getPost($postId)
     {
         $postModel = $this->postModelConfig['class'];
-        $ret = $postModel::where('id', $parameters['post_id'])->first();
+        $ret = $postModel::where('id', $postId)->first();
 
         return $ret;
     }
@@ -108,7 +108,7 @@ class LaravelCards
      *
      *  @return string $ret             the HTML to print on screen
      **/
-    public function prepareCard($parameters, $postData)
+    public function prepareCardHtml($parameters, $postData)
     {
         $ret = "<div class='row featurette' style='".$parameters['bkg_color'].$parameters['text_color']."'>";
         if ($parameters['container_wrap']) {
