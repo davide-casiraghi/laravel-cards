@@ -4,12 +4,12 @@ namespace DavideCasiraghi\LaravelCards;
 
 class LaravelCards
 {
-    protected $postModelConfig = [];
+    /*protected $postModelConfig = [];
 
     public function __construct()
     {
         $this->postModelConfig = config('laravel-cards.models.post');
-    }
+    }*/
 
     /**************************************************************************/
 
@@ -21,7 +21,8 @@ class LaravelCards
      **/
     public static function getPost($postId)
     {
-        $postModel = $this->postModelConfig['class'];
+        //$postModel = $this->postModelConfig['class'];
+        $postModel =  config('laravel-cards.models.post.class');
         $ret = $postModel::where('id', $postId)->first();
 
         return $ret;
