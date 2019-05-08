@@ -4,14 +4,13 @@ namespace DavideCasiraghi\LaravelCards;
 
 class LaravelCards
 {
-    
     protected $postModelConfig = [];
 
     public function __construct()
     {
         $this->postModelConfig = config('laravel-cards.models.post');
     }
-    
+
     // **********************************************************************
 
     /**
@@ -52,9 +51,9 @@ class LaravelCards
             return;
         }
     }
-    
+
     // **********************************************************************
-    
+
     /**
      *  Returns the plugin parameters.
      *  @param array $matches       result from the regular expression on the string from the article
@@ -99,7 +98,7 @@ class LaravelCards
 
         return $ret;
     }
-    
+
     // **********************************************************************
 
     /**
@@ -130,7 +129,4 @@ class LaravelCards
 
         return $ret;
     }
-
-    
-    
 }

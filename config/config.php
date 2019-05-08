@@ -11,6 +11,6 @@ return [
             'text' => 'body',
             'image' => 'image',
             'image_alt' => 'alt',
-        ]
-    ]
+        ],
+    ],
 ];
