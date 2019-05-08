@@ -14,7 +14,7 @@ class LaravelCards
     /**************************************************************************/
 
     /**
-     *  Provide the post data array (post_title, post_body, post_image)
+     *  Provide the post data array (post_title, post_body, post_image).
      *
      *  @param int $postId
      *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $ret
@@ -30,9 +30,9 @@ class LaravelCards
     /**************************************************************************/
 
     /**
-     *  Find the card snippet occurances in the text
+     *  Find the card snippet occurances in the text.
      *
-     *  @param string $text  
+     *  @param string $text
      *  @return array $matches
      **/
     public function getCardSnippetOccurrences($text)
@@ -57,9 +57,9 @@ class LaravelCards
     /**************************************************************************/
 
     /**
-     *  Returns the plugin parameters
+     *  Returns the plugin parameters.
      *
-     *  @param array $matches      
+     *  @param array $matches
      *  @return array $ret
      **/
     public function getParameters($matches)
@@ -105,7 +105,7 @@ class LaravelCards
     /**************************************************************************/
 
     /**
-     *  Prepare the card HTML
+     *  Prepare the card HTML.
      *
      *  @param array $parameters
      *  @param \DavideCasiraghi\LaravelCards\Models\Post $postData
@@ -136,10 +136,10 @@ class LaravelCards
     }
 
     /**************************************************************************/
-    
+
     /**
-     *  Return the same text with the cards HTML replaced 
-     *  where the token strings has been found 
+     *  Return the same text with the cards HTML replaced
+     *  where the token strings has been found.
      *
      *  @param string $text
      *  @return string $ret
