@@ -97,4 +97,30 @@ class LaravelCardsTest extends TestCase
 
         $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642;color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'></h2><div class='lead mb-4'></div></div><div class='image col-md-3 order-md-2'></div></div>");
     }
+    
+    /** @test */
+    public function it_replace_card_strings_with_template()
+    {
+        $post = factory(Post::class)->create([
+            'id' => 6,
+            'title' => 'test title',
+        ]);
+        
+        $post = factory(Post::class)->create([
+            'id' => 8,
+            'title' => 'test title 2',
+        ]);
+        
+        $text = 'Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
+                 Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        ';
+        
+        $text = LaravelCards::replace_card_strings_with_template($text);
+        
+        dd($text);
+        
+    }
+    
+    
+    
 }

@@ -150,7 +150,7 @@ class LaravelCards
 
         foreach ($matches as $key => $single_gallery_matches) {
             $parameters = self::getParameters($single_gallery_matches);
-            $post = self::getPost($post['id']);
+            $post = self::getPost($parameters['post_id']);
             $cardHtml = self::prepareCardHtml($parameters, $post);
 
             // Substitute the card html to the token that has been found
