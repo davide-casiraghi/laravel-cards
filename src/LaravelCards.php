@@ -152,8 +152,8 @@ class LaravelCards
     public function replace_card_snippets_with_template($text)
     {
         $matches = self::getCardSnippetOccurrences($text);
-        
-        if ($matches){
+
+        if ($matches) {
             foreach ($matches as $key => $single_gallery_matches) {
                 $parameters = self::getParameters($single_gallery_matches);
                 $post = self::getPost($parameters['post_id']);
