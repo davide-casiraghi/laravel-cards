@@ -124,7 +124,7 @@ class LaravelCards
             $ret .= "<h2 class='featurette-heading mt-5'>".$post['title'].'</h2>';
             $ret .= "<div class='lead mb-4'>".$post['body'].'</div>';
             $ret .= '</div>';
-            
+
             if (! empty($post['introimage'])) {
                 $ret .= "<div class='image d-none d-md-block ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'
                         style='
@@ -134,17 +134,16 @@ class LaravelCards
                         background-position: 50% 50%;
                         '>";
                 $ret .= '</div>';
-                        
+
                 $ret .= "<div class='image col-12 d-md-none ".$parameters['img_col_order_class']."'>";
-                    $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
+                $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
                 $ret .= '</div>';
             }
-            
+
             $ret .= "<div class='image col-12 ".$parameters['img_col_order_class']."'>";
-                $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
+            $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
             $ret .= '</div>';
-            
-            
+
             if ($parameters['container_wrap']) {
                 $ret .= '</div>';
             }
