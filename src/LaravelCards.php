@@ -140,9 +140,9 @@ class LaravelCards
                 $ret .= '</div>';
             }
             
-            $ret .= "<div class='image col-12 ".$parameters['img_col_order_class']."'>";
+            /*$ret .= "<div class='image col-12 ".$parameters['img_col_order_class']."'>";
                 $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
-            $ret .= '</div>';
+            $ret .= '</div>';*/
             
             
             if ($parameters['container_wrap']) {
