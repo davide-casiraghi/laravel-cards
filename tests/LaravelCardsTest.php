@@ -67,7 +67,7 @@ class LaravelCardsTest extends TestCase
     }
 
     /** @test */
-    public function it_prepare_the_card_html()
+    /*public function it_prepare_the_card_html()
     {
         $parameters = [
             'token' => '{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}',
@@ -91,7 +91,7 @@ class LaravelCardsTest extends TestCase
         $cardHtml = LaravelCards::prepareCardHtml($parameters, $postData);
 
         $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>test title</h2><div class='lead mb-4'>Quos qui nulla ipsum dolorem architecto. Enim ea eos illum neque assumenda sapiente voluptas. Et qui quia animi dolorum voluptas quia.</div></div></div>");
-    }
+    }*/
 
     /** @test */
     public function it_replace_card_snippets_with_template()

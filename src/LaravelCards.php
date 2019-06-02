@@ -113,7 +113,7 @@ class LaravelCards
      *
      *  @return string $ret
      **/
-    public static function prepareCardHtml($parameters, $post)
+    /*public static function prepareCardHtml($parameters, $post)
     {
         if (! is_null($post)) {
             $ret = "<div class='row featurette' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
@@ -140,9 +140,6 @@ class LaravelCards
                 $ret .= '</div>';
             }
 
-            /*$ret .= "<div class='image col-12 ".$parameters['img_col_order_class']."'>";
-                $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
-            $ret .= '</div>';*/
 
             if ($parameters['container_wrap']) {
                 $ret .= '</div>';
@@ -153,7 +150,7 @@ class LaravelCards
         }
 
         return $ret;
-    }
+    }*/
 
     /**************************************************************************/
 
