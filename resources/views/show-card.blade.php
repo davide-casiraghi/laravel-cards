@@ -8,7 +8,7 @@
         
         <div class="text {{$parameters['text_col_size_class']}} my-auto px-4 {{$parameters['text_col_order_class']}}">
             <h2 class="featurette-heading mt-5">{{$post['title']}}</h2>
-            <div class="lead mb-4">{{$post['body']}}</div>
+            <div class="lead mb-4">{!!$post['body']!!}</div>
         </div>
         
         @if ($post['introimage'])
