@@ -15,7 +15,7 @@ class LaravelCardsServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-cards');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
@@ -25,7 +25,7 @@ class LaravelCardsServiceProvider extends ServiceProvider
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../resources/assets/sass' => resource_path('sass/vendor/laravel-responsive-gallery/'),
+                __DIR__.'/../resources/assets/sass' => resource_path('sass/vendor/laravel-cards/'),
             ], 'sass');
 
             // Publishing the views.

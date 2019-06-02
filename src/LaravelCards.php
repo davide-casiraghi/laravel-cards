@@ -172,7 +172,11 @@ class LaravelCards
             foreach ($matches as $key => $single_gallery_matches) {
                 $parameters = self::getParameters($single_gallery_matches);
                 $post = self::getPost($parameters['post_id']);
-                $cardHtml = self::prepareCardHtml($parameters, $post);
+                //$cardHtml = self::prepareCardHtml($parameters, $post);
+                
+                $cardView = self::showCard($post, $parameters);
+                $cardHtml = $cardView->render();
+
 
                 // Substitute the card html to the token that has been found
                 $text = str_replace($parameters['token'], $cardHtml, $text);
@@ -183,4 +187,23 @@ class LaravelCards
 
         return $ret;
     }
+    
+    
+    /***************************************************************************/
+
+    /**
+     * Show a Card.
+     *
+     * @param  \DavideCasiraghi\LaravelCards\Models\Post $post
+     * @return \Illuminate\Http\Response
+     */
+    public function showCard($post, $parameters)
+    {
+        //$postParameters = ($post) ? $this->getParametersArray($post) : null;
+
+        return view('laravel-cards::show-card', compact('post'))
+            ->with('parameters', $parameters);
+    }
+
+    
 }
