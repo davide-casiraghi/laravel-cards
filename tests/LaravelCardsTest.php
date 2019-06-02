@@ -84,12 +84,13 @@ class LaravelCardsTest extends TestCase
         $post = factory(Post::class)->create([
             'id' => 6,
             'title' => 'test title',
+            'body' => 'Quos qui nulla ipsum dolorem architecto. Enim ea eos illum neque assumenda sapiente voluptas. Et qui quia animi dolorum voluptas quia.',
         ]);
 
         $postData = LaravelCards::getPost($post['id']);
         $cardHtml = LaravelCards::prepareCardHtml($parameters, $postData);
 
-        $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>".$post['title']."</h2><div class='lead mb-4'>".$post['body']."</div></div><div class='image col-md-3 order-md-2'></div></div>");
+        $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>test title</h2><div class='lead mb-4'>Quos qui nulla ipsum dolorem architecto. Enim ea eos illum neque assumenda sapiente voluptas. Et qui quia animi dolorum voluptas quia.</div></div></div>");
     }
 
     /** @test */
