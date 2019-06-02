@@ -128,7 +128,7 @@ class LaravelCards
             if (! empty($post['introimage'])) {
                 $ret .= "<div class='image d-none d-md-block ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'
                         style='
-                        background-size: cover; 
+                        background-size: cover;
                         background-image: url(/storage/images/posts_intro_images/".$post['introimage'].");
                         min-height: 400px;
                         background-position: 50% 50%;
