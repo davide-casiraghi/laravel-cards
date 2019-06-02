@@ -112,8 +112,8 @@ class LaravelCardsTest extends TestCase
 
         $text = LaravelCards::replace_card_snippets_with_template($text);
 
-        $this->assertContains("<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>".$post_1['title']."</h2><div class='lead mb-4'>".$post_1['body']."</div></div></div>", $text);
-        $this->assertContains("<div class='row featurette' style='background-color: #FF0044; color: #f34532;'><div class='container'><div class='text col-md-10 my-auto px-4 order-md-2'><h2 class='featurette-heading mt-5'>".$post_2['title']."</h2><div class='lead mb-4'>".$post_2['body']."</div></div></div></div>", $text);
+        $this->assertContains("<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>".$post_1['title']."</h2><div class='lead mb-4'>".$post_1['body'].'</div></div></div>', $text);
+        $this->assertContains("<div class='row featurette' style='background-color: #FF0044; color: #f34532;'><div class='container'><div class='text col-md-10 my-auto px-4 order-md-2'><h2 class='featurette-heading mt-5'>".$post_2['title']."</h2><div class='lead mb-4'>".$post_2['body'].'</div></div></div></div>', $text);
     }
 
     /** @test */
