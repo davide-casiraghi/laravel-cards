@@ -1,4 +1,4 @@
-@extends('laravel-cards::jumbotronImages.layout')
+@extends('laravel-cards::cards.layout')
 
 @section('content')
     
@@ -11,50 +11,59 @@
         </div>
     </div>
 
-    @include('laravel-cards::partials.error-management', [
+    @include('laravel-form-partials::error-management', [
           'style' => 'alert-danger',
     ])
 
-    <form action="{{ route('jumbotron-images-translation.update', $jumbotronImageTranslation->id) }}" method="POST">
+    <form action="{{ route('laravel-cards-translation.update', $cardTranslation->id) }}" method="POST">
         @csrf
         @method('PUT')
-            @include('laravel-cards::partials.input-hidden', [
+            @include('laravel-form-partials::input-hidden', [
                   'name' => 'jumbotron_image_translation_id',
-                  'value' => $jumbotronImageTranslation->id,
+                  'value' => $cardTranslation->id,
             ])
-            @include('laravel-cards::partials.input-hidden', [
+            @include('laravel-form-partials::input-hidden', [
                   'name' => 'jumbotron_image_id',
-                  'value' => $jumbotronImageId,
+                  'value' => $cardId,
             ])
-            @include('laravel-cards::partials.input-hidden', [
+            @include('laravel-form-partials::input-hidden', [
                   'name' => 'language_code',
                   'value' => $languageCode
             ])
 
          <div class="row">
+             <div class="col-12">
+                 @include('laravel-form-partials::input', [
+                     'title' => 'Heading',
+                     'name' => 'heading',
+                     'placeholder' => '', 
+                     'value' => $cardTranslation->heading,
+                     'required' => true,
+                 ])
+            </div>
             <div class="col-12">
-                @include('laravel-cards::partials.input', [
+                @include('laravel-form-partials::input', [
                     'title' =>  'Title',
                     'name' => 'title',
                     'placeholder' => '', 
-                    'value' => $jumbotronImageTranslation->title,
+                    'value' => $cardTranslation->title,
                     'required' => true,
                 ])
             </div>
             <div class="col-12">
-                @include('laravel-cards::partials.textarea-plain', [
+                @include('laravel-form-partials::textarea-plain', [
                     'title' =>  'Body',
                     'name' => 'body',
-                    'value' => $jumbotronImageTranslation->body,
+                    'value' => $cardTranslation->body,
                     'required' => true,
                 ])
             </div>
             <div class="col-12">
-                @include('laravel-cards::partials.input', [
+                @include('laravel-form-partials::input', [
                     'title' =>  'Button text',
                     'name' => 'button_text',
                     'placeholder' => '', 
-                    'value' => $jumbotronImageTranslation->button_text,
+                    'value' => $cardTranslation->button_text,
                     'required' => true,
                 ])
             </div>
@@ -62,12 +71,12 @@
         
         <div class="row mt-2">  
             <div class="col-12 action">
-                @include('laravel-cards::partials.buttons-back-submit', [
-                    'route' => 'jumbotron-images.index'  
+                @include('laravel-form-partials::buttons-back-submit', [
+                    'route' => 'laravel-cards.index'  
                 ])
     </form>
 
-                <form action="{{ route('jumbotron-images-translation.destroy',$jumbotronImageTranslation->id) }}" method="POST">
+                <form action="{{ route('laravel-cards-translation.destroy',$cardTranslation->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-link pl-0">Delete translation</button>

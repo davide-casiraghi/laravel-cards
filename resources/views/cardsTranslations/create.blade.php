@@ -1,4 +1,4 @@
-@extends('laravel-cards::jumbotronImages.layout')
+@extends('laravel-cards::cards.layout')
 
 @section('content')
     
@@ -11,25 +11,34 @@
         </div>
     </div>
 
-    @include('laravel-cards::partials.error-management', [
+    @include('laravel-form-partials::error-management', [
           'style' => 'alert-danger',
     ])
 
-    <form action="{{ route('jumbotron-images-translation.store') }}" method="POST">
+    <form action="{{ route('laravel-cards-translation.store') }}" method="POST">
         @csrf
 
-            @include('laravel-cards::partials.input-hidden', [
+            @include('laravel-form-partials::input-hidden', [
                   'name' => 'jumbotron_image_id',
-                  'value' => $jumbotronImageId,
+                  'value' => $cardId,
             ])
-            @include('laravel-cards::partials.input-hidden', [
+            @include('laravel-form-partials::input-hidden', [
                   'name' => 'language_code',
                   'value' => $languageCode
             ])
 
          <div class="row">
+             <div class="col-12">
+                 @include('laravel-form-partials::input', [
+                     'title' =>  'Heading',
+                     'name' => 'heading',
+                     'placeholder' => '', 
+                     'value' => old('heading'),
+                     'required' => true,
+                 ])
+            </div>
             <div class="col-12">
-                @include('laravel-cards::partials.input', [
+                @include('laravel-form-partials::input', [
                     'title' =>  'Title',
                     'name' => 'title',
                     'placeholder' => '', 
@@ -38,7 +47,7 @@
                 ])
             </div>
             <div class="col-12">
-                @include('laravel-cards::partials.textarea-plain', [
+                @include('laravel-form-partials::textarea-plain', [
                     'title' =>  'Body',
                     'name' => 'body',
                     'value' => old('body'),
@@ -46,7 +55,7 @@
                 ])
             </div>
             <div class="col-12">
-                @include('laravel-cards::partials.input', [
+                @include('laravel-form-partials::input', [
                     'title' =>  'Button text',
                     'name' => 'button_text',
                     'placeholder' => '', 
@@ -56,8 +65,8 @@
             </div>
         </div>
 
-        @include('laravel-cards::partials.buttons-back-submit', [
-            'route' => 'jumbotron-images.index'  
+        @include('laravel-form-partials::buttons-back-submit', [
+            'route' => 'laravel-cards.index'  
         ])
 
     </form>

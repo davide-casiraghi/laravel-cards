@@ -1,25 +1,25 @@
-@extends('laravel-cards::jumbotronImages.layout')
+@extends('laravel-cards::cards.layout')
 
 @section('content')
 
     <div class="container mb-4">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h4>Add new jumbotron image</h4>
+                    <h4>Add new card</h4>
                 </div>
             </div>
 
-            @include('laravel-cards::partials.error-management', [
+            @include('laravel-form-partials::error-management', [
                   'style' => 'alert-danger',
             ])
 
-            <form action="{{ route('jumbotron-images.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('laravel-cards.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 
                 <div class="row">
                     {{-- Title  --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.input', [
+                        @include('laravel-form-partials::input', [
                             'title' => 'Title',
                             'name' => 'title',
                             'placeholder' => '', 
@@ -30,8 +30,8 @@
     
                     {{-- Body --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.textarea-plain', [
-                            'title' =>  'Body',
+                        @include('laravel-form-partials::textarea-plain', [
+                            'title' => 'Body',
                             'name' => 'body',
                             'value' => old('body'),
                             'required' => false,
@@ -39,7 +39,7 @@
                     </div>
 
                     {{-- Image --}}
-                    @include('laravel-cards::partials.upload-image', [
+                    @include('laravel-form-partials::upload-image', [
                           'title' => 'Jumbotron background image', 
                           'name' => 'image_file_name',
                           'folder' => 'jumbotron_images',
@@ -49,7 +49,7 @@
                     
                     {{-- Jumbotron Height --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Jumbotron Height",
                               'name' => 'jumbotron_height',
                               'placeholder' => "choose one...", 
@@ -64,7 +64,7 @@
                     
                     {{-- Background color --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.input', [
+                        @include('laravel-form-partials::input', [
                             'title' =>  'Background color',
                             'name' => 'background_color',
                             'tooltip' => 'Exadecimal value for the background color. Active if a value is specified.',
@@ -76,7 +76,7 @@
                     
                     {{-- Cover Opacity --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Cover Opacity",
                               'name' => 'cover_opacity',
                               'placeholder' => "choose one...", 
@@ -98,7 +98,7 @@
                     
                     {{-- Text width --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Width",
                               'name' => 'text_width',
                               'placeholder' => "choose one...", 
@@ -113,7 +113,7 @@
                     
                     {{-- Text vertical alignment --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Vertical alignment",
                               'name' => 'text_vertical_alignment',
                               'placeholder' => "choose one...", 
@@ -127,7 +127,7 @@
                     
                     {{-- Text vertical alignment --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Hotizontal alignment",
                               'name' => 'text_horizontal_alignment',
                               'placeholder' => "choose one...", 
@@ -141,7 +141,7 @@
                     
                     {{-- Text shadow  --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Shadow",
                               'name' => 'text_shadow',
                               'placeholder' => "choose one...", 
@@ -162,7 +162,7 @@
                     
                     {{-- Button url --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.input', [
+                        @include('laravel-form-partials::input', [
                             'title' =>  'Button url',
                             'name' => 'button_url',
                             'placeholder' => 'https://...', 
@@ -173,7 +173,7 @@
                     
                     {{-- Button text --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.input', [
+                        @include('laravel-form-partials::input', [
                             'title' =>  'Button text',
                             'name' => 'button_text',
                             'placeholder' => '', 
@@ -184,7 +184,7 @@
                     
                     {{-- Button color --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.select', [
+                        @include('laravel-form-partials::select', [
                               'title' => "Button color",
                               'name' => 'button_color',
                               'placeholder' => "choose one...", 
@@ -203,7 +203,7 @@
                     </div>
                     
                     <div class="col-12">
-                        @include('laravel-cards::partials.checkbox', [
+                        @include('laravel-form-partials::checkbox', [
                               'name' => 'scroll_down_arrow',
                               'description' => 'Show scroll down arrow',
                               'value' => old('scroll_down_arrow'),
@@ -212,7 +212,7 @@
                     </div>
                     
                     <div class="col-12">
-                        @include('laravel-cards::partials.checkbox', [
+                        @include('laravel-form-partials::checkbox', [
                               'name' => 'parallax',
                               'description' => 'Parallax effect for the background image',
                               'value' => old('parallax'),
@@ -222,7 +222,7 @@
                     
                     {{-- White moon --}}
                     <div class="col-12">
-                        @include('laravel-cards::partials.checkbox', [
+                        @include('laravel-form-partials::checkbox', [
                               'name' => 'white_moon',
                               'description' => 'White moon under the banner',
                               'value' => old('white_moon'),
@@ -231,8 +231,8 @@
                     </div>
                                         
                     <div class="col-12">
-                        @include('laravel-cards::partials.buttons-back-submit', [
-                           'route' => 'jumbotron-images.index'  
+                        @include('laravel-form-partials::buttons-back-submit', [
+                           'route' => 'laravel-cards.index'  
                        ])
                     </div>
                                 
