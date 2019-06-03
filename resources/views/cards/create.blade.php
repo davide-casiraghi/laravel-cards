@@ -42,7 +42,7 @@
                     @include('laravel-form-partials::upload-image', [
                           'title' => 'Jumbotron background image', 
                           'name' => 'image_file_name',
-                          'folder' => 'jumbotron_images',
+                          'folder' => 'cards',
                           'value' => '',
                           'required' => false,
                     ])

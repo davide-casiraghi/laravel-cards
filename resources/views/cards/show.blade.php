@@ -7,7 +7,7 @@
         {{$card->body}}<br />
         {{$card->button_text}}<br />
         @if(!empty($card->image_file_name))
-            <img class="ml-3 float-right img-fluid mb-2" src="/storage/images/jumbotron_images/thumb_{{ $card->image_file_name }}" ><br />
+            <img class="ml-3 float-right img-fluid mb-2" src="/storage/images/cards/thumb_{{ $card->image_file_name }}" ><br />
         @endif
         {{$card->button_url}}<br />
     @else

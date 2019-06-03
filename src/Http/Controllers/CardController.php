@@ -23,23 +23,23 @@ class CardController
         $countriesAvailableForTranslations = LaravelLocalization::getSupportedLocales();
 
         if ($searchKeywords) {
-            $jumbotronImages = Card::
-                                select('jumbotron_image_translations.jumbotron_image_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
-                                ->join('jumbotron_image_translations', 'jumbotron_images.id', '=', 'jumbotron_image_translations.jumbotron_image_id')
+            $cards = Card::
+                                select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
+                                ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
                                 ->orderBy('title')
                                 ->where('title', 'like', '%'.$searchKeywords.'%')
                                 ->where('locale', 'en')
                                 ->paginate(20);
         } else {
-            $jumbotronImages = Card::
-                                select('jumbotron_image_translations.jumbotron_image_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
-                                ->join('jumbotron_image_translations', 'jumbotron_images.id', '=', 'jumbotron_image_translations.jumbotron_image_id')
+            $cards = Card::
+                                select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
+                                ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
                                 ->where('locale', 'en')
                                 ->orderBy('title')
                                 ->paginate(20);
         }
 
-        return view('laravel-jumbotron-images::jumbotronImages.index', compact('jumbotronImages'))
+        return view('laravel-cards::cards.index', compact('cards'))
                              ->with('i', (request()->input('page', 1) - 1) * 20)
                              ->with('searchKeywords', $searchKeywords)
                              ->with('countriesAvailableForTranslations', $countriesAvailableForTranslations);
@@ -54,7 +54,7 @@ class CardController
      */
     public function create()
     {
-        return view('laravel-jumbotron-images::jumbotronImages.create')
+        return view('laravel-cards::cards.create')
                     ->with('jumbotronHeightArray', $this->getJumbotronHeightArray())
                     ->with('buttonColorArray', $this->getButtonColorArray())
                     ->with('coverOpacityArray', $this->getCoverOpacityArray())
@@ -97,7 +97,7 @@ class CardController
     {
         $jumbotronImage = Card::find($jumbotronImageId);
 
-        return view('laravel-jumbotron-images::jumbotronImages.show', compact('jumbotronImage'));
+        return view('laravel-cards::cards.show', compact('jumbotronImage'));
     }
 
     /***************************************************************************/
@@ -112,7 +112,7 @@ class CardController
     {
         $jumbotronImage = Card::find($jumbotronImageId);
 
-        return view('laravel-jumbotron-images::jumbotronImages.edit', compact('jumbotronImage'))
+        return view('laravel-cards::cards.edit', compact('jumbotronImage'))
                     ->with('jumbotronHeightArray', $this->getJumbotronHeightArray())
                     ->with('buttonColorArray', $this->getButtonColorArray())
                     ->with('coverOpacityArray', $this->getCoverOpacityArray())
@@ -191,7 +191,7 @@ class CardController
         if ($request->file('image_file_name')) {
             $imageFile = $request->file('image_file_name');
             $imageName = $imageFile->hashName();
-            $imageSubdir = 'jumbotron_images';
+            $imageSubdir = 'cards';
             $imageWidth = '1067';
             $thumbWidth = '690';
 

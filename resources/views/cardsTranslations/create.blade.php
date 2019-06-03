@@ -19,7 +19,7 @@
         @csrf
 
             @include('laravel-form-partials::input-hidden', [
-                  'name' => 'jumbotron_image_id',
+                  'name' => 'card_id',
                   'value' => $cardId,
             ])
             @include('laravel-form-partials::input-hidden', [

@@ -21,7 +21,7 @@ class CardTranslationController
     {
         $selectedLocaleName = $this->getSelectedLocaleName($languageCode);
 
-        return view('laravel-jumbotron-images::jumbotronImagesTranslations.create')
+        return view('laravel-cards::cardsTranslations.create')
                 ->with('jumbotronImageId', $jumbotronImageId)
                 ->with('languageCode', $languageCode)
                 ->with('selectedLocaleName', $selectedLocaleName);
@@ -38,13 +38,13 @@ class CardTranslationController
      */
     public function edit($jumbotronImageId, $languageCode)
     {
-        $jumbotronImageTranslation = CardTranslation::where('jumbotron_image_id', $jumbotronImageId)
+        $jumbotronImageTranslation = CardTranslation::where('card_id', $jumbotronImageId)
                         ->where('locale', $languageCode)
                         ->first();
 
         $selectedLocaleName = $this->getSelectedLocaleName($languageCode);
 
-        return view('laravel-jumbotron-images::jumbotronImagesTranslations.edit', compact('jumbotronImageTranslation'))
+        return view('laravel-cards::cardsTranslations.edit', compact('jumbotronImageTranslation'))
                     ->with('jumbotronImageId', $jumbotronImageId)
                     ->with('languageCode', $languageCode)
                     ->with('selectedLocaleName', $selectedLocaleName);
@@ -116,7 +116,7 @@ class CardTranslationController
 
         switch ($saveOrUpdate) {
             case 'save':
-                $jumbotronImageTranslation->jumbotron_image_id = $request->get('jumbotron_image_id');
+                $jumbotronImageTranslation->card_id = $request->get('card_id');
                 $jumbotronImageTranslation->locale = $request->get('language_code');
                 $jumbotronImageTranslation->save();
                 break;
