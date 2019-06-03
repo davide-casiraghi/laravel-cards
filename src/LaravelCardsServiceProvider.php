@@ -3,6 +3,7 @@
 namespace DavideCasiraghi\LaravelCards;
 
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class LaravelCardsServiceProvider extends ServiceProvider
 {
