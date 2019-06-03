@@ -16,8 +16,20 @@ class LaravelCardsServiceProvider extends ServiceProvider
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-cards');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+
+        if (! class_exists('CreateCardsTable')) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_cards_table_table.php.stub' => database_path('migrations/'.Carbon::now()->format('Y_m_d_Hmsu').'_create_cards_table_table.php'),
+            ], 'migrations');
+        }
+        if (! class_exists('CreateCardTranslationsTable')) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_card_translations_table.php.stub' => database_path('migrations/'.Carbon::now()->format('Y_m_d_Hmsu').'_create_card_translations_table.php'),
+            ], 'migrations');
+        }
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
