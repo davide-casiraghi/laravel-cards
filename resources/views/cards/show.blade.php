@@ -3,6 +3,7 @@
 @section('content')
     
     @if($card)
+        {{$card->heading}}<br />
         {{$card->title}}<br />
         {{$card->body}}<br />
         {{$card->button_text}}<br />
@@ -12,7 +13,7 @@
         {{$card->button_url}}<br />
     @else
         <div class="alert alert-warning" role="alert">
-            No jumbotron corresponding to the specified ID has been found.
+            No card corresponding to the specified ID has been found.
         </div>
     @endif
 @endsection

@@ -7,7 +7,7 @@
             <h4>Cards list</h4>
         </div>
         <div class="col-12 col-sm-6 mt-4 mt-sm-0 text-right">
-            <a class="btn btn-success create-new" href="{{ route('laravel-cards.create') }}">Add new jumbotron image</a>
+            <a class="btn btn-success create-new" href="{{ route('laravel-cards.create') }}">Add new card</a>
         </div>
     </div>
     

@@ -17,6 +17,17 @@
                 @csrf
                 
                 <div class="row">
+                    {{-- Heading  --}}
+                    <div class="col-12">
+                        @include('laravel-form-partials::input', [
+                            'title' => 'Heading',
+                            'name' => 'heading',
+                            'placeholder' => '', 
+                            'value' => old('heading'),
+                            'required' => true,
+                        ])
+                    </div>
+                    
                     {{-- Title  --}}
                     <div class="col-12">
                         @include('laravel-form-partials::input', [
