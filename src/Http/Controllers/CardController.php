@@ -55,13 +55,7 @@ class CardController
     public function create()
     {
         return view('laravel-cards::cards.create')
-                    ->with('jumbotronHeightArray', $this->getJumbotronHeightArray())
-                    ->with('buttonColorArray', $this->getButtonColorArray())
-                    ->with('coverOpacityArray', $this->getCoverOpacityArray())
-                    ->with('textWidthArray', $this->getTextWidthArray())
-                    ->with('textVerticalAlignmentArray', $this->getTextVerticalAlignmentArray())
-                    ->with('textHorizontalAlignmentArray', $this->getTextHorizontalAlignmentArray())
-                    ->with('textShadowArray', $this->getTextShadowArray());
+                    ->with('buttonColorArray', $this->getButtonColorArray());
     }
 
     /***************************************************************************/
@@ -74,15 +68,15 @@ class CardController
      */
     public function store(Request $request)
     {
-        $jumbotronImage = new Card();
+        $card = new Card();
 
         // Set the default language to edit the quote in English
         App::setLocale('en');
 
-        $this->saveOnDb($request, $jumbotronImage);
+        $this->saveOnDb($request, $card);
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron image added succesfully');
+        return redirect()->route('card-images.index')
+                            ->with('success', 'Card image added succesfully');
     }
 
     /***************************************************************************/
@@ -90,14 +84,14 @@ class CardController
     /**
      * Display the specified resource.
      *
-     * @param  int $jumbotronImageId
+     * @param  int $cardId
      * @return \Illuminate\Http\Response
      */
-    public function show($jumbotronImageId = null)
+    public function show($cardId = null)
     {
-        $jumbotronImage = Card::find($jumbotronImageId);
+        $card = Card::find($cardId);
 
-        return view('laravel-cards::cards.show', compact('jumbotronImage'));
+        return view('laravel-cards::cards.show', compact('cardImage'));
     }
 
     /***************************************************************************/
@@ -105,21 +99,15 @@ class CardController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $jumbotronImageId
+     * @param  int $cardId
      * @return \Illuminate\Http\Response
      */
-    public function edit($jumbotronImageId = null)
+    public function edit($cardId = null)
     {
-        $jumbotronImage = Card::find($jumbotronImageId);
+        $card = Card::find($cardId);
 
-        return view('laravel-cards::cards.edit', compact('jumbotronImage'))
-                    ->with('jumbotronHeightArray', $this->getJumbotronHeightArray())
-                    ->with('buttonColorArray', $this->getButtonColorArray())
-                    ->with('coverOpacityArray', $this->getCoverOpacityArray())
-                    ->with('textWidthArray', $this->getTextWidthArray())
-                    ->with('textVerticalAlignmentArray', $this->getTextVerticalAlignmentArray())
-                    ->with('textHorizontalAlignmentArray', $this->getTextHorizontalAlignmentArray())
-                    ->with('textShadowArray', $this->getTextShadowArray());
+        return view('laravel-cards::cards.edit', compact('cardImage'))
+                    ->with('buttonColorArray', $this->getButtonColorArray());
     }
 
     /***************************************************************************/
@@ -128,20 +116,20 @@ class CardController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $jumbotronImageId
+     * @param  int  $cardId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $jumbotronImageId)
+    public function update(Request $request, $cardId)
     {
-        $jumbotronImage = Card::find($jumbotronImageId);
+        $card = Card::find($cardId);
 
         // Set the default language to update the quote in English
         App::setLocale('en');
 
-        $this->saveOnDb($request, $jumbotronImage);
+        $this->saveOnDb($request, $card);
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron image updated succesfully');
+        return redirect()->route('card-images.index')
+                            ->with('success', 'Card image updated succesfully');
     }
 
     /***************************************************************************/
@@ -149,16 +137,16 @@ class CardController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $jumbotronImageId
+     * @param  int  $cardId
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jumbotronImageId)
+    public function destroy($cardId)
     {
-        $jumbotronImage = Card::find($jumbotronImageId);
-        $jumbotronImage->delete();
+        $card = Card::find($cardId);
+        $card->delete();
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron image deleted succesfully');
+        return redirect()->route('card-images.index')
+                            ->with('success', 'Card image deleted succesfully');
     }
 
     /***************************************************************************/
@@ -166,28 +154,27 @@ class CardController
     /**
      * Save the record on DB.
      * @param  \Illuminate\Http\Request  $request
-     * @param  \DavideCasiraghi\LaravelCards\Models\Card  $jumbotronImage
+     * @param  \DavideCasiraghi\LaravelCards\Models\Card  $card
      * @return void
      */
-    public function saveOnDb($request, $jumbotronImage)
+    public function saveOnDb($request, $card)
     {
-        $jumbotronImage->translateOrNew('en')->title = $request->get('title');
-        $jumbotronImage->translateOrNew('en')->body = $request->get('body');
-        $jumbotronImage->translateOrNew('en')->button_text = $request->get('button_text');
-        $jumbotronImage->button_url = $request->get('button_url');
-        $jumbotronImage->jumbotron_height = $request->get('jumbotron_height');
-        $jumbotronImage->cover_opacity = $request->get('cover_opacity');
-        $jumbotronImage->scroll_down_arrow = ($request->scroll_down_arrow == 'on') ? 1 : 0;
-        $jumbotronImage->background_color = $request->get('background_color');
-        $jumbotronImage->button_color = $request->get('button_color');
-        $jumbotronImage->parallax = ($request->parallax == 'on') ? 1 : 0;
-        $jumbotronImage->white_moon = ($request->white_moon == 'on') ? 1 : 0;
-        $jumbotronImage->text_width = $request->get('text_width');
-        $jumbotronImage->text_vertical_alignment = $request->get('text_vertical_alignment');
-        $jumbotronImage->text_horizontal_alignment = $request->get('text_horizontal_alignment');
-        $jumbotronImage->text_shadow = $request->get('text_shadow');
-
-        // Jumbotron image upload
+        $card->translateOrNew('en')->heading = $request->get('heading');
+        $card->translateOrNew('en')->title = $request->get('title');
+        $card->translateOrNew('en')->body = $request->get('body');
+        $card->translateOrNew('en')->button_text = $request->get('button_text');
+        
+        $card->img_alignment = $request->get('img_alignment');
+        $card->img_col_size = $request->get('img_col_size');
+        $card->img_col_size = $request->get('img_col_size');
+        $card->background_color = $request->get('background_color');        
+        $card->button_url = $request->get('button_url');
+        $card->button_color = $request->get('button_color');
+        $card->button_corners = $request->get('button_corners');
+        $card->button_icon = $request->get('button_icon');
+        $card->container_wrap = ($request->container_wrap == 'on') ? 1 : 0;
+        
+        // Card image upload
         if ($request->file('image_file_name')) {
             $imageFile = $request->file('image_file_name');
             $imageName = $imageFile->hashName();
@@ -196,12 +183,12 @@ class CardController
             $thumbWidth = '690';
 
             $this->uploadImageOnServer($imageFile, $imageName, $imageSubdir, $imageWidth, $thumbWidth);
-            $jumbotronImage->image_file_name = $imageName;
+            $card->image_file_name = $imageName;
         } else {
-            $jumbotronImage->image_file_name = $request->image_file_name;
+            $card->image_file_name = $request->image_file_name;
         }
 
-        $jumbotronImage->save();
+        $card->save();
     }
 
     /***************************************************************************/
@@ -249,47 +236,6 @@ class CardController
     /***************************************************************************/
 
     /**
-     * Return and array with the jumbotron possible height options.
-     *
-     * @return array
-     */
-    public static function getJumbotronHeightArray()
-    {
-        $ret = [
-             'is-small' => 'Small',
-             'is-medium' => 'Medium',
-             'is-large' => 'Large',
-             'is-halfheight' => 'Halfheight',
-             'is-fullheight' => 'Fullheight',
-         ];
-
-        return $ret;
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Return and array with the jumbotron possible opacity options.
-     *
-     * @return array
-     */
-    public static function getCoverOpacityArray()
-    {
-        $ret = [
-             '0' => 'none',
-             '0.1' => '10%',
-             '0.2' => '20%',
-             '0.3' => '30%',
-             '0.4' => '40%',
-             '0.5' => '50%',
-         ];
-
-        return $ret;
-    }
-
-    /***************************************************************************/
-
-    /**
      * Return and array with the button possible color options.
      *
      * @return array
@@ -322,82 +268,5 @@ class CardController
         return $ret;
     }
 
-    /***************************************************************************/
 
-    /**
-     * Return and array with the text possible width options.
-     *
-     * @return array
-     */
-    public static function getTextWidthArray()
-    {
-        $ret = [
-             '100' => '100%',
-             '90' => '90%',
-             '80' => '80%',
-             '70' => '70%',
-             '60' => '60%',
-             '50' => '50%',
-             '40' => '40%',
-             '30' => '30%',
-             '20' => '20%',
-         ];
-
-        return $ret;
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Return and array with the text possible vertical alignment options.
-     *
-     * @return array
-     */
-    public static function getTextVerticalAlignmentArray()
-    {
-        $ret = [
-             'align-items: flex-start;' => 'Top',
-             'align-items: center;' => 'Center',
-             'align-items: flex-end;' => 'Bottom',
-         ];
-
-        return $ret;
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Return and array with the text possible horizontal alignment options.
-     *
-     * @return array
-     */
-    public static function getTextHorizontalAlignmentArray()
-    {
-        $ret = [
-             'left' => 'Left',
-             'center' => 'Center',
-             'right' => 'Right',
-         ];
-
-        return $ret;
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Return and array with the text possible shadow options.
-     *
-     * @return array
-     */
-    public static function getTextShadowArray()
-    {
-        $ret = [
-             '' => 'None',
-             'text-shadow: 2px 1px 5px rgba(0,0,0,0.3);' => 'Small',
-             'text-shadow: 2px 1px 1px rgba(0,0,0,0.3);' => 'Small Blurred',
-             'text-shadow: 3px 2px 2px rgba(0,0,0,0.3);' => 'High',
-         ];
-
-        return $ret;
-    }
 }
