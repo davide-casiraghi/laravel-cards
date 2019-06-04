@@ -163,6 +163,7 @@ class CardController
         $card->translateOrNew('en')->title = $request->get('title');
         $card->translateOrNew('en')->body = $request->get('body');
         $card->translateOrNew('en')->button_text = $request->get('button_text');
+        $card->translateOrNew('en')->image_alt = $request->get('image_alt');
         
         $card->img_alignment = $request->get('img_alignment');
         $card->img_col_size = $request->get('img_col_size');

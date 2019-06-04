@@ -2,7 +2,7 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use DavideCasiraghi\LaravelCards\Models\Post;
+use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 
 class LaravelCardsTest extends TestCase
@@ -57,7 +57,7 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_the_post_data()
     {
-        $post = factory(Post::class)->create([
+        $post = factory(Card::class)->create([
             'id' => 6,
             'title' => 'test title',
         ]);

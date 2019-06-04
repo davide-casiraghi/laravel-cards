@@ -15,6 +15,7 @@ class CardTranslation extends Model
         'title',
         'body',
         'button_text',
+        'image_alt',
         'locale',
     ];
 }

@@ -16,6 +16,7 @@ class CreateCardTranslationsTable extends Migration
             $table->string('title')->nullable();
             $table->text('body')->nullable();
             $table->string('button_text')->nullable();
+            $table->string('image_alt')->nullable();
             
             $table->string('locale')->index();
             $table->unique(['card_id', 'locale']);
