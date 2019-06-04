@@ -106,7 +106,7 @@
                             'value' => old('background_color'),
                             'required' => false,
                         ])
-                    </div>    
+                    </div>
                     
                     {{-- ====================================================== --}}
                     
@@ -171,7 +171,7 @@
                         ])
                     </div>
                     
-                    {{-- Button Corners --}}
+                    {{-- Button Icon --}}
                     <div class="col-12">
                         @include('laravel-form-partials::select', [
                               'title' => "Button Icon",
