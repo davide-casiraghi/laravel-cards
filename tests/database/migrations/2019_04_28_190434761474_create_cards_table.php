@@ -10,10 +10,17 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('body');
-            $table->string('image')->nullable();
-            $table->string('image_alt')->nullable();
+            $table->string('image_file_name')->nullable();
+            $table->string('img_alignment')->nullable();
+            $table->integer('img_col_size')->nullable();
+            $table->string('bkg_color')->nullable();
+            $table->string('text_color')->nullable();
+            
+            $table->string('button_url')->nullable();
+            $table->string('button_color')->nullable();
+            $table->string('button_corners')->nullable();
+            $table->string('button_icon')->nullable();
+            $table->boolean('container_wrap')->nullable();
             $table->timestamps();
         });
     }
