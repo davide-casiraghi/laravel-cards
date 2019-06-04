@@ -13,15 +13,15 @@ This Laravel package show a responsive card made by text on one side of the page
 
 The library replace all the occurances of this snippet
 ```
-{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}
+{# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}
 ```
 With the some HTML code of a responsive card made by text on one side and an image on the other.  
 This code uses **bootstrap 4**.
 ```html
 <div class='row laravel-card' style='background-color: #345642;color: #212529;'>
 	<div class='text col-md-9 my-auto px-4 order-md-1'>
-		<h2 class='laravel-card-heading mt-5'>".$post_1['title']."</h2>
-		<div class='lead mb-4'>".$post_1['body']."</div>
+		<h2 class='laravel-card-heading mt-5'>".$card_1['title']."</h2>
+		<div class='lead mb-4'>".$card_1['body']."</div>
 	</div>
 <div class='image col-md-3 order-md-2'></div>
 

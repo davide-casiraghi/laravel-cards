@@ -4,26 +4,26 @@ namespace DavideCasiraghi\LaravelCards;
 
 class LaravelCards
 {
-    /*protected $postModelConfig = [];
+    /*protected $cardModelConfig = [];
 
     public function __construct()
     {
-        $this->postModelConfig = config('laravel-cards.models.post');
+        $this->cardModelConfig = config('laravel-cards.models.card');
     }*/
 
     /**************************************************************************/
 
     /**
-     *  Provide the post data array (post_title, post_body, post_image).
+     *  Provide the card data array (card_title, card_body, card_image).
      *
-     *  @param int $postId
-     *  @return  \DavideCasiraghi\LaravelCards\Models\Post    $ret
+     *  @param int $cardId
+     *  @return  \DavideCasiraghi\LaravelCards\Models\Card    $ret
      **/
-    public static function getPost($postId)
+    public static function getCard($cardId)
     {
-        //$postModel = $this->postModelConfig['class'];
-        $postModel = config('laravel-cards.models.post.class');
-        $ret = $postModel::where('id', $postId)->first();
+        //$cardModel = $this->cardModelConfig['class'];
+        $cardModel = config('laravel-cards.models.card.class');
+        $ret = $cardModel::where('id', $cardId)->first();
 
         return $ret;
     }
@@ -40,7 +40,7 @@ class LaravelCards
     {
         $re = '/{\#
                 \h+card
-                \h+(post_id|img_alignment|img_col_size|bkg_color|text_color|container_wrap)=\[([^]]*)]
+                \h+(card_id|img_alignment|img_col_size|bkg_color|text_color|container_wrap)=\[([^]]*)]
                 \h+((?1))=\[([^]]*)]
                 \h+((?1))=\[([^]]*)] 
                 \h+((?1))=\[([^]]*)]
@@ -71,7 +71,7 @@ class LaravelCards
         $ret['token'] = $matches[0];
         //dump($matches);
 
-        $ret['post_id'] = $matches[2];
+        $ret['card_id'] = $matches[2];
         $ret['img_col_size_class'] = 'col-md-'.$matches[6];
         $textColSize = 12 - $matches[6];
         $ret['text_col_size_class'] = 'col-md-'.$textColSize;
@@ -109,34 +109,34 @@ class LaravelCards
      *  Prepare the card HTML.
      *
      *  @param array $parameters
-     *  @param \DavideCasiraghi\LaravelCards\Models\Post $post
+     *  @param \DavideCasiraghi\LaravelCards\Models\Card $card
      *
      *  @return string $ret
      **/
-    /*public static function prepareCardHtml($parameters, $post)
+    /*public static function prepareCardHtml($parameters, $card)
     {
-        if (! is_null($post)) {
+        if (! is_null($card)) {
             $ret = "<div class='row laravel-card' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
             if ($parameters['container_wrap']) {
                 $ret .= "<div class='container'>";
             }
             $ret .= "<div class='text ".$parameters['text_col_size_class'].' my-auto px-4 '.$parameters['text_col_order_class']."'>";
-            $ret .= "<h2 class='laravel-card-heading mt-5'>".$post['title'].'</h2>';
-            $ret .= "<div class='lead mb-4'>".$post['body'].'</div>';
+            $ret .= "<h2 class='laravel-card-heading mt-5'>".$card['title'].'</h2>';
+            $ret .= "<div class='lead mb-4'>".$card['body'].'</div>';
             $ret .= '</div>';
 
-            if (! empty($post['introimage'])) {
+            if (! empty($card['introimage'])) {
                 $ret .= "<div class='image d-none d-md-block ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'
                         style='
                         background-size: cover;
-                        background-image: url(/storage/images/posts_intro_images/".$post['introimage'].");
+                        background-image: url(/storage/images/cards_intro_images/".$card['introimage'].");
                         min-height: 400px;
                         background-position: 50% 50%;
                         '>";
                 $ret .= '</div>';
 
                 $ret .= "<div class='image col-12 d-md-none ".$parameters['img_col_order_class']."'>";
-                $ret .= "<img class='laravel-card-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
+                $ret .= "<img class='laravel-card-image img-fluid mx-auto' src='/storage/images/cards_intro_images/".$card['introimage']."' alt='".$card['introimage_alt']."'>";
                 $ret .= '</div>';
             }
 
@@ -146,7 +146,7 @@ class LaravelCards
             }
             $ret .= '</div>';
         } else {
-            $ret = "<div class='alert alert-warning' role='alert'>The post with id ".$parameters['post_id'].' has not been found.</div>';
+            $ret = "<div class='alert alert-warning' role='alert'>The card with id ".$parameters['card_id'].' has not been found.</div>';
         }
 
         return $ret;
@@ -168,10 +168,10 @@ class LaravelCards
         if ($matches) {
             foreach ($matches as $key => $single_gallery_matches) {
                 $parameters = self::getParameters($single_gallery_matches);
-                $post = self::getPost($parameters['post_id']);
-                //$cardHtml = self::prepareCardHtml($parameters, $post);
+                $card = self::getCard($parameters['card_id']);
+                //$cardHtml = self::prepareCardHtml($parameters, $card);
 
-                $cardView = self::showCard($post, $parameters);
+                $cardView = self::showCard($card, $parameters);
                 $cardHtml = $cardView->render();
 
                 // Substitute the card html to the token that has been found
@@ -189,14 +189,14 @@ class LaravelCards
     /**
      * Show a Card.
      *
-     * @param  \DavideCasiraghi\LaravelCards\Models\Post $post
+     * @param  \DavideCasiraghi\LaravelCards\Models\Card $card
      * @return \Illuminate\Http\Response
      */
-    public function showCard($post, $parameters)
+    public function showCard($card, $parameters)
     {
-        //$postParameters = ($post) ? $this->getParametersArray($post) : null;
+        //$cardParameters = ($card) ? $this->getParametersArray($card) : null;
 
-        return view('laravel-cards::show-card', compact('post'))
+        return view('laravel-cards::show-card', compact('card'))
             ->with('parameters', $parameters);
     }
 }

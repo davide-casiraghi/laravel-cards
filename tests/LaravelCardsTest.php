@@ -10,8 +10,8 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_multiple_cards_snippet_occurances()
     {
-        $text = 'Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
         ';
         $matches = LaravelCards::getCardSnippetOccurrences($text);
         //dd($matches);
@@ -43,8 +43,8 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_the_parameter_array()
     {
-        $text = 'Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
         ';
         $matches = LaravelCards::getCardSnippetOccurrences($text);
         $parameters = LaravelCards::getParameters($matches[0]);
@@ -55,49 +55,49 @@ class LaravelCardsTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_the_post_data()
+    public function it_gets_the_card_data()
     {
-        $post = factory(Card::class)->create([
+        $card = factory(Card::class)->create([
             'id' => 6,
             'title' => 'test title',
         ]);
 
-        $postData = LaravelCards::getPost($post['id']);
-        $this->assertEquals($postData['title'], 'test title');
+        $cardData = LaravelCards::getCard($card['id']);
+        $this->assertEquals($cardData['title'], 'test title');
     }
 
     /** @test */
     public function it_replace_card_snippets_with_template()
     {
-        $post_1 = factory(Post::class)->create([
+        $card_1 = factory(Card::class)->create([
             'id' => 6,
             'title' => 'test title',
         ]);
 
-        $post_2 = factory(Post::class)->create([
+        $card_2 = factory(Card::class)->create([
             'id' => 8,
             'title' => 'test title 2',
         ]);
 
-        $text = 'Lorem ipsum {# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card post_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
         ';
 
         $text = LaravelCards::replace_card_snippets_with_template($text);
         $text = trim(preg_replace('/\s+/', ' ', $text));
 
-        $this->assertContains('<div class="row laravel-card" style="background-color: #345642; color: #212529;"> <div class="text col-md-9 my-auto px-4 order-md-1"> <h2 class="laravel-card-heading mt-5">'.$post_1['title'].'</h2> <div class="lead mb-4">'.$post_1['body'].'</div> </div> </div>', $text);
-        $this->assertContains('<div class="row laravel-card" style="background-color: #FF0044; color: #f34532;"> <div class="container"> <div class="text col-md-10 my-auto px-4 order-md-2"> <h2 class="laravel-card-heading mt-5">'.$post_2['title'].'</h2> <div class="lead mb-4">'.$post_2['body'].'</div> </div> </div> </div>', $text);
+        $this->assertContains('<div class="row laravel-card" style="background-color: #345642; color: #212529;"> <div class="text col-md-9 my-auto px-4 order-md-1"> <h2 class="laravel-card-heading mt-5">'.$card_1['title'].'</h2> <div class="lead mb-4">'.$card_1['body'].'</div> </div> </div>', $text);
+        $this->assertContains('<div class="row laravel-card" style="background-color: #FF0044; color: #f34532;"> <div class="container"> <div class="text col-md-10 my-auto px-4 order-md-2"> <h2 class="laravel-card-heading mt-5">'.$card_2['title'].'</h2> <div class="lead mb-4">'.$card_2['body'].'</div> </div> </div> </div>', $text);
     }
 
     /** @test */
-    public function it_replace_a_card_string_with_alert_if_post_not_found()
+    public function it_replace_a_card_string_with_alert_if_card_not_found()
     {
-        $text = 'Lorem ipsum {# card post_id=[2] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.';
+        $text = 'Lorem ipsum {# card card_id=[2] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.';
 
         $text = LaravelCards::replace_card_snippets_with_template($text);
         $text = trim(preg_replace('/\s+/', ' ', $text));
 
-        $this->assertContains('<div class="alert alert-warning" role="alert">The post with id 2 has not been found.</div>', $text);
+        $this->assertContains('<div class="alert alert-warning" role="alert">The card with id 2 has not been found.</div>', $text);
     }
 }

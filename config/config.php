@@ -5,8 +5,8 @@
  */
 return [
     'models' => [
-        'post' => [
-            'class' => 'DavideCasiraghi\LaravelCards\Models\Post',
+        'card' => [
+            'class' => 'DavideCasiraghi\LaravelCards\Models\Card',
             'title' => 'title',
             'text' => 'body',
             'image' => 'image',
