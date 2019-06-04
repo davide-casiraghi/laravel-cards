@@ -50,7 +50,7 @@
                     
                     {{-- Image --}}
                     @include('laravel-form-partials::upload-image', [
-                          'title' => 'Jumbotron background image', 
+                          'title' => 'Card image',
                           'name' => 'image_file_name',
                           'folder' => 'cards',
                           'value' => $card->image_file_name

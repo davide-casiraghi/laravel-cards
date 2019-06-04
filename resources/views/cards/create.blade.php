@@ -51,27 +51,50 @@
 
                     {{-- Image --}}
                     @include('laravel-form-partials::upload-image', [
-                          'title' => 'Jumbotron background image', 
+                          'title' => 'Card image', 
                           'name' => 'image_file_name',
                           'folder' => 'cards',
                           'value' => '',
                           'required' => false,
                     ])
                     
-                    {{-- Jumbotron Height --}}
+                    {{-- Image Alignment --}}
                     <div class="col-12">
                         @include('laravel-form-partials::select', [
-                              'title' => "Jumbotron Height",
-                              'name' => 'jumbotron_height',
+                              'title' => "Image Alignment",
+                              'name' => 'img_alignment',
                               'placeholder' => "choose one...", 
-                              'records' => $jumbotronHeightArray,
+                              'records' => [
+                                 '1' => 'Left',
+                                 '2' => 'Right',
+                              ],
                               'liveSearch' => 'false',
                               'mobileNativeMenu' => true,
-                              'seleted' => old('jumbotron_height'),
-                              'required' => true,
-                              'tooltip' => 'The height is expressed in Bulma size unit like, check Bulma website.',
+                              'seleted' => old('img_alignment'),
+                              'required' => false,
+                              'tooltip' => 'aaa',
                         ])
                     </div>
+                    
+                    {{-- Image column size --}}
+                    <div class="col-12">
+                        @include('laravel-form-partials::select', [
+                              'title' => "Image column size",
+                              'name' => 'img_col_size',
+                              'placeholder' => "choose one...", 
+                              'records' => [
+                                 '1' => '200px',
+                                 '2' => '300px',
+                                 '2' => '400px',
+                              ],
+                              'liveSearch' => 'false',
+                              'mobileNativeMenu' => true,
+                              'seleted' => old('img_col_size'),
+                              'required' => false,
+                              'tooltip' => 'aaa',
+                        ])
+                    </div>
+                    
                     
                     {{-- Background color --}}
                     <div class="col-12">
@@ -83,86 +106,7 @@
                             'value' => old('background_color'),
                             'required' => false,
                         ])
-                    </div>
-                    
-                    {{-- Cover Opacity --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::select', [
-                              'title' => "Cover Opacity",
-                              'name' => 'cover_opacity',
-                              'placeholder' => "choose one...", 
-                              'records' => $coverOpacityArray,
-                              'liveSearch' => 'false',
-                              'mobileNativeMenu' => true,
-                              'seleted' => old('cover_opacity'),
-                              'required' => true,
-                              'tooltip' => 'Add an opaque layer above the background image'
-                        ])
-                    </div>
-                    
-                    {{-- ====================================================== --}}
-                    
-                    <div class="col-12">
-                        <hr>
-                        <h4 class="mt-4 mb-4">Text options</h4>
-                    </div>
-                    
-                    {{-- Text width --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::select', [
-                              'title' => "Width",
-                              'name' => 'text_width',
-                              'placeholder' => "choose one...", 
-                              'records' => $textWidthArray,
-                              'liveSearch' => 'false',
-                              'mobileNativeMenu' => true,
-                              'seleted' => old('text_width'),
-                              'tooltip' => 'Just for the desktop view.',
-                              'required' => false,
-                        ])
-                    </div>
-                    
-                    {{-- Text vertical alignment --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::select', [
-                              'title' => "Vertical alignment",
-                              'name' => 'text_vertical_alignment',
-                              'placeholder' => "choose one...", 
-                              'records' => $textVerticalAlignmentArray,
-                              'liveSearch' => 'false',
-                              'mobileNativeMenu' => true,
-                              'seleted' => old('text_vertical_alignment'),
-                              'required' => false,
-                        ])
-                    </div>
-                    
-                    {{-- Text vertical alignment --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::select', [
-                              'title' => "Hotizontal alignment",
-                              'name' => 'text_horizontal_alignment',
-                              'placeholder' => "choose one...", 
-                              'records' => $textHorizontalAlignmentArray,
-                              'liveSearch' => 'false',
-                              'mobileNativeMenu' => true,
-                              'seleted' => old('text_horizontal_alignment'),
-                              'required' => false,
-                        ])
-                    </div>
-                    
-                    {{-- Text shadow  --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::select', [
-                              'title' => "Shadow",
-                              'name' => 'text_shadow',
-                              'placeholder' => "choose one...", 
-                              'records' => $textShadowArray,
-                              'liveSearch' => 'false',
-                              'mobileNativeMenu' => true,
-                              'seleted' => old('text_shadow'),
-                              'required' => false,
-                        ])
-                    </div>
+                    </div>    
                     
                     {{-- ====================================================== --}}
                     
@@ -208,6 +152,43 @@
                         ])
                     </div>
                     
+                    {{-- Button Corners --}}
+                    <div class="col-12">
+                        @include('laravel-form-partials::select', [
+                              'title' => "Button Corners",
+                              'name' => 'button_corners',
+                              'placeholder' => "choose one...", 
+                              'records' => [
+                                 '1' => 'Square',
+                                 '2' => 'Half Round',
+                                 '3' => 'Round',
+                              ],
+                              'liveSearch' => 'false',
+                              'mobileNativeMenu' => true,
+                              'seleted' => old('button_corners'),
+                              'required' => false,
+                              'tooltip' => 'aaa',
+                        ])
+                    </div>
+                    
+                    {{-- Button Corners --}}
+                    <div class="col-12">
+                        @include('laravel-form-partials::select', [
+                              'title' => "Button Icon",
+                              'name' => 'button_icon',
+                              'placeholder' => "choose one...", 
+                              'records' => [
+                                 '1' => 'None',
+                                 '2' => 'Arrow right',
+                                 '3' => 'Arrow down',
+                              ],
+                              'liveSearch' => 'false',
+                              'mobileNativeMenu' => true,
+                              'seleted' => old('button_icon'),
+                              'required' => false,
+                        ])
+                    </div>
+                    
                     <div class="col-12">
                         <hr>
                         <h4 class="mt-4 mb-4">Extra options</h4>
@@ -215,28 +196,9 @@
                     
                     <div class="col-12">
                         @include('laravel-form-partials::checkbox', [
-                              'name' => 'scroll_down_arrow',
-                              'description' => 'Show scroll down arrow',
-                              'value' => old('scroll_down_arrow'),
-                              'required' => false,
-                        ])
-                    </div>
-                    
-                    <div class="col-12">
-                        @include('laravel-form-partials::checkbox', [
-                              'name' => 'parallax',
-                              'description' => 'Parallax effect for the background image',
-                              'value' => old('parallax'),
-                              'required' => false,
-                        ])
-                    </div>
-                    
-                    {{-- White moon --}}
-                    <div class="col-12">
-                        @include('laravel-form-partials::checkbox', [
-                              'name' => 'white_moon',
-                              'description' => 'White moon under the banner',
-                              'value' => old('white_moon'),
+                              'name' => 'container_wrap',
+                              'description' => 'Container wrap',
+                              'value' => old('container_wrap'),
                               'required' => false,
                         ])
                     </div>
