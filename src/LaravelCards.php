@@ -116,12 +116,12 @@ class LaravelCards
     /*public static function prepareCardHtml($parameters, $post)
     {
         if (! is_null($post)) {
-            $ret = "<div class='row featurette' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
+            $ret = "<div class='row laravel-card' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
             if ($parameters['container_wrap']) {
                 $ret .= "<div class='container'>";
             }
             $ret .= "<div class='text ".$parameters['text_col_size_class'].' my-auto px-4 '.$parameters['text_col_order_class']."'>";
-            $ret .= "<h2 class='featurette-heading mt-5'>".$post['title'].'</h2>';
+            $ret .= "<h2 class='laravel-card-heading mt-5'>".$post['title'].'</h2>';
             $ret .= "<div class='lead mb-4'>".$post['body'].'</div>';
             $ret .= '</div>';
 
@@ -136,7 +136,7 @@ class LaravelCards
                 $ret .= '</div>';
 
                 $ret .= "<div class='image col-12 d-md-none ".$parameters['img_col_order_class']."'>";
-                $ret .= "<img class='featurette-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
+                $ret .= "<img class='laravel-card-image img-fluid mx-auto' src='/storage/images/posts_intro_images/".$post['introimage']."' alt='".$post['introimage_alt']."'>";
                 $ret .= '</div>';
             }
 

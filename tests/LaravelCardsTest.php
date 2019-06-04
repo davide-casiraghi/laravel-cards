@@ -67,33 +67,6 @@ class LaravelCardsTest extends TestCase
     }
 
     /** @test */
-    /*public function it_prepare_the_card_html()
-    {
-        $parameters = [
-            'token' => '{# card post_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #}',
-            'post_id' => '6',
-            'img_col_size_class' => 'col-md-3',
-            'text_col_size_class' => 'col-md-9',
-            'bkg_color' => 'background-color: #345642;',
-            'text_color' => 'color: #212529;',
-            'container_wrap' => 0,
-            'img_col_order_class' => 'order-md-2',
-            'text_col_order_class' => 'order-md-1',
-        ];
-
-        $post = factory(Post::class)->create([
-            'id' => 6,
-            'title' => 'test title',
-            'body' => 'Quos qui nulla ipsum dolorem architecto. Enim ea eos illum neque assumenda sapiente voluptas. Et qui quia animi dolorum voluptas quia.',
-        ]);
-
-        $postData = LaravelCards::getPost($post['id']);
-        $cardHtml = LaravelCards::prepareCardHtml($parameters, $postData);
-
-        $this->assertEquals($cardHtml, "<div class='row featurette' style='background-color: #345642; color: #212529;'><div class='text col-md-9 my-auto px-4 order-md-1'><h2 class='featurette-heading mt-5'>test title</h2><div class='lead mb-4'>Quos qui nulla ipsum dolorem architecto. Enim ea eos illum neque assumenda sapiente voluptas. Et qui quia animi dolorum voluptas quia.</div></div></div>");
-    }*/
-
-    /** @test */
     public function it_replace_card_snippets_with_template()
     {
         $post_1 = factory(Post::class)->create([
@@ -113,8 +86,8 @@ class LaravelCardsTest extends TestCase
         $text = LaravelCards::replace_card_snippets_with_template($text);
         $text = trim(preg_replace('/\s+/', ' ', $text));
 
-        $this->assertContains('<div class="row featurette" style="background-color: #345642; color: #212529;"> <div class="text col-md-9 my-auto px-4 order-md-1"> <h2 class="featurette-heading mt-5">'.$post_1['title'].'</h2> <div class="lead mb-4">'.$post_1['body'].'</div> </div> </div>', $text);
-        $this->assertContains('<div class="row featurette" style="background-color: #FF0044; color: #f34532;"> <div class="container"> <div class="text col-md-10 my-auto px-4 order-md-2"> <h2 class="featurette-heading mt-5">'.$post_2['title'].'</h2> <div class="lead mb-4">'.$post_2['body'].'</div> </div> </div> </div>', $text);
+        $this->assertContains('<div class="row laravel-card" style="background-color: #345642; color: #212529;"> <div class="text col-md-9 my-auto px-4 order-md-1"> <h2 class="laravel-card-heading mt-5">'.$post_1['title'].'</h2> <div class="lead mb-4">'.$post_1['body'].'</div> </div> </div>', $text);
+        $this->assertContains('<div class="row laravel-card" style="background-color: #FF0044; color: #f34532;"> <div class="container"> <div class="text col-md-10 my-auto px-4 order-md-2"> <h2 class="laravel-card-heading mt-5">'.$post_2['title'].'</h2> <div class="lead mb-4">'.$post_2['body'].'</div> </div> </div> </div>', $text);
     }
 
     /** @test */

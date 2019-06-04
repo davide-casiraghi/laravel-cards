@@ -1,13 +1,13 @@
 
 
 @if ($post)
-    <div class="row featurette" style="{{$parameters['bkg_color']}} {{$parameters['text_color']}}">
+    <div class="row laravel-card" style="{{$parameters['bkg_color']}} {{$parameters['text_color']}}">
         @if ($parameters['container_wrap'])
             <div class="container">
         @endif
         
         <div class="text {{$parameters['text_col_size_class']}} my-auto px-4 {{$parameters['text_col_order_class']}}">
-            <h2 class="featurette-heading mt-5">{{$post['title']}}</h2>
+            <h2 class="laravel-card-heading mt-5">{{$post['title']}}</h2>
             <div class="lead mb-4">{!!$post['body']!!}</div>
         </div>
         
@@ -22,7 +22,7 @@
             </div>
 
             <div class="image col-12 d-md-none {{$parameters['img_col_order_class']}}">
-                <img class="featurette-image img-fluid mx-auto" src="/storage/images/posts_intro_images/{{$post['introimage']}}" alt="{{$post['introimage_alt']}}">
+                <img class="laravel-card-image img-fluid mx-auto" src="/storage/images/posts_intro_images/{{$post['introimage']}}" alt="{{$post['introimage_alt']}}">
             </div>
         @endif
         
