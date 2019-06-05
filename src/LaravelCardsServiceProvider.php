@@ -15,7 +15,7 @@ class LaravelCardsServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-cards');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-cards');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
@@ -52,9 +52,9 @@ class LaravelCardsServiceProvider extends ServiceProvider
             ], 'assets');*/
 
             // Publishing the translation files.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-cards'),
-            ], 'lang');*/
+            ], 'lang');
 
             // Registering package commands.
             // $this->commands([]);

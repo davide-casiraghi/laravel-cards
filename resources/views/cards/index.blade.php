@@ -75,13 +75,13 @@
                             <div class="col-12 pb-2 action">
                                 <form action="{{ route('laravel-cards.destroy',$card->id) }}" method="POST">
 
-                                    <a class="btn btn-primary float-right" href="{{ route('laravel-cards.edit',$card->id) }}">@lang('views.edit')</a>
-                                    <a class="btn btn-outline-primary mr-2 float-right" href="{{ route('laravel-cards.show',$card->id) }}">@lang('views.view')</a>
+                                    <a class="btn btn-primary float-right" href="{{ route('laravel-cards.edit',$card->id) }}">@lang('laravel-cards::general.edit')</a>
+                                    <a class="btn btn-outline-primary mr-2 float-right" href="{{ route('laravel-cards.show',$card->id) }}">@lang('laravel-cards::general.view')</a>
                                     
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" class="btn btn-link pl-0">@lang('views.delete')</button>
+                                    <button type="submit" class="btn btn-link pl-0">@lang('laravel-cards::general.delete')</button>
                                 </form>
                             </div>
                         </div>
