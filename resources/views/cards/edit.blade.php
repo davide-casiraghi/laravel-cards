@@ -80,15 +80,21 @@
                               'name' => 'img_col_size',
                               'placeholder' => "choose one...", 
                               'records' => [
-                                 '1' => '200px',
-                                 '2' => '300px',
-                                 '2' => '400px',
+                                  '2' => '2 columns',
+                                  '3' => '3 columns',
+                                  '4' => '4 columns',
+                                  '5' => '5 columns',
+                                  '6' => '6 columns',
+                                  '7' => '7 columns',
+                                  '8' => '8 columns',
+                                  '9' => '9 columns',
+                                  '10' => '10 columns',
                               ],
                               'liveSearch' => 'false',
                               'mobileNativeMenu' => true,
                               'seleted' => $card->img_col_size,
                               'required' => false,
-                              'tooltip' => 'aaa',
+                              'tooltip' => 'Expressed in bootstrap columns',
                         ])
                     </div>
                     
