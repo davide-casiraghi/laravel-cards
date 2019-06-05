@@ -13,9 +13,7 @@
         
         @if ($card['introimage'])
             <div class="image d-none d-md-block {{$cardParameters['img_col_size_class']}} {{$cardParameters['img_col_order_class']}}"
-                    style="
-                    background-image: url(/storage/images/cards_intro_images/{{$card['introimage']}});
-                    ">
+                    style="background-image: url(/storage/images/cards_intro_images/{{$card['introimage']}});">
             </div>
 
             <div class="image col-12 d-md-none {{$cardParameters['img_col_order_class']}}">
