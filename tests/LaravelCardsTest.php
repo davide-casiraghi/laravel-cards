@@ -32,11 +32,11 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_the_parameter_array()
     {
-        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] #}.
         ';
         $matches = LaravelCards::getCardSnippetOccurrences($text);
-        $parameters = LaravelCards::getParameters($matches[0]);
+        $parameters = LaravelCards::getParametersArray($matches[0]);
         //dd($parameters);
 
         $this->assertEquals($parameters['bkg_color'], 'background-color: #345642;');

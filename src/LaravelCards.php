@@ -2,6 +2,8 @@
 
 namespace DavideCasiraghi\LaravelCards;
 
+use DavideCasiraghi\LaravelCards\Models\Card;
+
 class LaravelCards
 {
     /*protected $cardModelConfig = [];
@@ -22,8 +24,8 @@ class LaravelCards
     public static function getCard($cardId)
     {
         //$cardModel = $this->cardModelConfig['class'];
-        $cardModel = config('laravel-cards.models.card.class');
-        $ret = $cardModel::where('id', $cardId)->first();
+        //$cardModel = config('laravel-cards.models.card.class');
+        $ret = Card::where('id', $cardId)->first();
 
         return $ret;
     }
