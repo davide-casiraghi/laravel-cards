@@ -14,10 +14,7 @@
         @if ($card['introimage'])
             <div class="image d-none d-md-block {{$cardParameters['img_col_size_class']}} {{$cardParameters['img_col_order_class']}}"
                     style="
-                    background-size: cover; 
                     background-image: url(/storage/images/cards_intro_images/{{$card['introimage']}});
-                    min-height: 400px;
-                    background-position: 50% 50%;
                     ">
             </div>
 

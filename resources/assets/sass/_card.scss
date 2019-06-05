@@ -37,6 +37,9 @@
     }
     .image{
         padding: 0;
+        background-size: cover; 
+        min-height: 400px;
+        background-position: 50% 50%;
         img{
             @media screen and (max-width: 768px){
                 width: 100%;
