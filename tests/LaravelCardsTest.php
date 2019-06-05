@@ -10,25 +10,14 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_multiple_cards_snippet_occurances()
     {
-        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] #}.
         ';
         $matches = LaravelCards::getCardSnippetOccurrences($text);
         //dd($matches);
 
         $this->assertEquals($matches[0][2], 6);
-        $this->assertEquals($matches[0][4], 'right');
-        $this->assertEquals($matches[0][6], 3);
-        $this->assertEquals($matches[0][8], '#345642');
-        $this->assertEquals($matches[0][10], '#212529');
-        $this->assertEquals($matches[0][12], 'false');
-
         $this->assertEquals($matches[1][2], 8);
-        $this->assertEquals($matches[1][4], 'left');
-        $this->assertEquals($matches[1][6], 2);
-        $this->assertEquals($matches[1][8], '#FF0044');
-        $this->assertEquals($matches[1][10], '#f34532');
-        $this->assertEquals($matches[1][12], 'true');
     }
 
     /** @test */
@@ -79,8 +68,8 @@ class LaravelCardsTest extends TestCase
             'title' => 'test title 2',
         ]);
 
-        $text = 'Lorem ipsum {# card card_id=[6] img_alignment=[right] img_col_size=[3] bkg_color=[#345642] text_color=[#212529] container_wrap=[false] #} sid amet.
-                 Lorem ipsum {# card card_id=[8] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.
+        $text = 'Lorem ipsum {# card card_id=[6] #} sid amet.
+                 Lorem ipsum {# card card_id=[8] #}.
         ';
 
         $text = LaravelCards::replace_card_snippets_with_template($text);
@@ -93,7 +82,7 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_replace_a_card_string_with_alert_if_card_not_found()
     {
-        $text = 'Lorem ipsum {# card card_id=[2] img_alignment=[left] img_col_size=[2] bkg_color=[#FF0044] text_color=[#f34532] container_wrap=[true] #}.';
+        $text = 'Lorem ipsum {# card card_id=[1] #}.';
 
         $text = LaravelCards::replace_card_snippets_with_template($text);
         $text = trim(preg_replace('/\s+/', ' ', $text));

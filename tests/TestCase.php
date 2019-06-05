@@ -41,8 +41,8 @@ abstract class TestCase extends BaseTestCase
     {
         return [
             LaravelCardsServiceProvider::class,
-            //\Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
-            //\Dimsav\Translatable\TranslatableServiceProvider::class,
+            \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+            \Dimsav\Translatable\TranslatableServiceProvider::class,
         ];
     }
 
@@ -50,7 +50,7 @@ abstract class TestCase extends BaseTestCase
     {
         return [
             'LaravelCards' => LaravelCards::class, // facade called PhpResponsiveQuote and the name of the facade class
-            //'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+            'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         ];
     }
 }
