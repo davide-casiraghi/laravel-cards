@@ -4,10 +4,10 @@ namespace DavideCasiraghi\LaravelCards\Http\Controllers;
 
 use Validator;
 use Illuminate\Http\Request;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class CardTranslationController
+class CardControllerTranslationController
 {
     /***************************************************************************/
 

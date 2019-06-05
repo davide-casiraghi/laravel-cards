@@ -4,10 +4,10 @@ namespace DavideCasiraghi\LaravelCards\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Intervention\Image\ImageManagerStatic as Image;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use DavideCasiraghi\LaravelCards\Models\Card;
+use Intervention\Image\ImageManagerStatic as Image;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CardController
 {
@@ -93,7 +93,7 @@ class CardController
         //$card = Card::find($cardId);
         $card = LaravelCards::getCard($cardId);
         $cardParameters = ($card) ? (LaravelCards::getParametersArray($card)) : null;
-        
+
         return view('laravel-cards::cards.show', compact('card'))
                 ->with('cardParameters', $cardParameters);
     }
@@ -168,17 +168,17 @@ class CardController
         $card->translateOrNew('en')->body = $request->get('body');
         $card->translateOrNew('en')->button_text = $request->get('button_text');
         $card->translateOrNew('en')->image_alt = $request->get('image_alt');
-        
+
         $card->img_alignment = $request->get('img_alignment');
         $card->img_col_size = $request->get('img_col_size');
         $card->img_col_size = $request->get('img_col_size');
-        $card->bkg_color = $request->get('bkg_color');        
+        $card->bkg_color = $request->get('bkg_color');
         $card->button_url = $request->get('button_url');
         $card->button_color = $request->get('button_color');
         $card->button_corners = $request->get('button_corners');
         $card->button_icon = $request->get('button_icon');
         $card->container_wrap = ($request->container_wrap == 'on') ? 1 : 0;
-        
+
         // Card image upload
         if ($request->file('image_file_name')) {
             $imageFile = $request->file('image_file_name');
@@ -272,6 +272,4 @@ class CardController
 
         return $ret;
     }
-
-
 }
