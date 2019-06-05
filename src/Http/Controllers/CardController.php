@@ -91,7 +91,7 @@ class CardController
     {
         $card = Card::find($cardId);
 
-        return view('laravel-cards::cards.show', compact('cardImage'));
+        return view('laravel-cards::cards.show', compact('card'));
     }
 
     /***************************************************************************/
@@ -106,7 +106,7 @@ class CardController
     {
         $card = Card::find($cardId);
 
-        return view('laravel-cards::cards.edit', compact('cardImage'))
+        return view('laravel-cards::cards.edit', compact('card'))
                     ->with('buttonColorArray', $this->getButtonColorArray());
     }
 
