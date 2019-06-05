@@ -10,14 +10,14 @@
             <h2 class="laravel-card-heading mt-5">{{$card['title']}}</h2>
             <div class="lead mb-4">{!!$card['body']!!}</div>
         </div>
-        
-        @if ($card['introimage'])
+
+        @if ($card['image_file_name'])
             <div class="image d-none d-md-block {{$cardParameters['img_col_size_class']}} {{$cardParameters['img_col_order_class']}}"
-                    style="background-image: url(/storage/images/cards_intro_images/{{$card['introimage']}});">
+                    style="background-image: url(/storage/images/cards/{{$card['image_file_name']}});">
             </div>
 
             <div class="image col-12 d-md-none {{$cardParameters['img_col_order_class']}}">
-                <img class="laravel-card-image img-fluid mx-auto" src="/storage/images/cards_intro_images/{{$card['introimage']}}" alt="{{$card['introimage_alt']}}">
+                <img class="laravel-card-image img-fluid mx-auto" src="/storage/images/cards/{{$card['image_file_name']}}" alt="{{$card['image_alt']}}">
             </div>
         @endif
         
