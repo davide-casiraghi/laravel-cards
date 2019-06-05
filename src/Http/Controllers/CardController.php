@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Intervention\Image\ImageManagerStatic as Image;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use DavideCasiraghi\LaravelCards\Models\Card;
+use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 
 class CardController
 {
@@ -89,9 +90,12 @@ class CardController
      */
     public function show($cardId = null)
     {
-        $card = Card::find($cardId);
-
-        return view('laravel-cards::cards.show', compact('card'));
+        //$card = Card::find($cardId);
+        $card = LaravelCards::getCard($cardId);
+        $cardParameters = ($card) ? (LaravelCards::getParametersArray($card)) : null;
+        
+        return view('laravel-cards::cards.show', compact('card'))
+                ->with('cardParameters', $cardParameters);
     }
 
     /***************************************************************************/

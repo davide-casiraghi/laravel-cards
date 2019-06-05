@@ -1,7 +1,7 @@
 @extends('laravel-cards::cards.layout')
 
 @section('content')
-    
+    {{--
     @if($card)
         {{$card->heading}}<br />
         {{$card->title}}<br />
@@ -16,4 +16,11 @@
             No card corresponding to the specified ID has been found.
         </div>
     @endif
+    --}}
+    
+    @include('laravel-cards::show-card', [
+         'card' => $card,
+         'cardParameters' => $cardParameters,
+   ])
+    
 @endsection
