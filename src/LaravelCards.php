@@ -63,7 +63,7 @@ class LaravelCards
      *  @param array $matches
      *  @return array $ret
      **/
-    public static function getParameters($matches)
+    public static function getSnippetParameters($matches)
     {
         $ret = [];
 
@@ -167,11 +167,11 @@ class LaravelCards
 
         if ($matches) {
             foreach ($matches as $key => $single_gallery_matches) {
-                $parameters = self::getParameters($single_gallery_matches);
-                $card = self::getCard($parameters['card_id']);
-                //$cardHtml = self::prepareCardHtml($parameters, $card);
+                $snippetParameters = self::getSnippetParameters($single_gallery_matches);
+                $card = self::getCard($snippetParameters['card_id']);
+                $cardParameters = ($card) ? $this->getParametersArray($card) : null;
 
-                $cardView = self::showCard($card, $parameters);
+                $cardView = self::showCard($card, $cardParameters);
                 $cardHtml = $cardView->render();
 
                 // Substitute the card html to the token that has been found
@@ -192,11 +192,50 @@ class LaravelCards
      * @param  \DavideCasiraghi\LaravelCards\Models\Card $card
      * @return \Illuminate\Http\Response
      */
-    public function showCard($card, $parameters)
+    public function showCard($card, $cardParameters)
     {
-        //$cardParameters = ($card) ? $this->getParametersArray($card) : null;
-
         return view('laravel-cards::show-card', compact('card'))
-            ->with('parameters', $parameters);
+            ->with('cardParameters', $cardParameters);
     }
+    
+    /***************************************************************************/
+
+    /**
+     * Return an array with the parameters for the show-card.
+     * @param  \DavideCasiraghi\LaravelJumbotronImages\Models\JumbotronImage  $jumbotronImage
+     * @return array
+     */
+    public static function getParametersArray($jumbotronImage)
+    {
+        $ret = [
+             'cover_opacity' => 'opacity: '.$jumbotronImage->cover_opacity.';',
+             'background_color' => 'background: #'.$jumbotronImage->background_color.';',
+             'image' => 'background-image:url(/storage/images/jumbotron_images/'.$jumbotronImage->image_file_name.');',
+             'text_horizontal_alignment' => 'text-align: '.$jumbotronImage->text_horizontal_alignment.';',
+         ];
+        $ret['white_moon'] = ($jumbotronImage->white_moon == 1) ? ' moon-curve ' : '';
+        $ret['scroll_down_arrow'] = ($jumbotronImage->scroll_down_arrow == 1) ? "<div class='scroll-arrow white'><span>SCROLL DOWN</span><img src='/vendor/laravel-jumbotron-images/assets/images/angle-down-regular.svg'></div>" : '';
+
+        /* Parallax - The element is defined with stellar plugin like: <section class="parallax" data-stellar-background-ratio="0.5" ><span>Summer</span></section>*/
+        $ret['parallax'] = ($jumbotronImage->parallax == 1) ? ' parallax' : '';
+        $ret['parallax_ratio'] = ($jumbotronImage->parallax == 1) ? "data-stellar-background-ratio='0.5'" : '';
+
+        /* Text Width */
+        if ($jumbotronImage->text_width != 100) {
+            switch ($jumbotronImage->text_horizontal_alignment) {
+                case 'left':	// Left
+                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%;';
+                break;
+                case 'center': // Center
+                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%; margin: auto;';
+                break;
+                case 'right': // Right
+                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%; float: right;';
+                break;
+            }
+        }
+
+        return $ret;
+    }
+
 }
