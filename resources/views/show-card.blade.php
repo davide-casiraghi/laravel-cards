@@ -4,6 +4,7 @@
     <div class="row laravel-card" style="{{$cardParameters['bkg_color']}} {{$cardParameters['text_color']}}">
         @if ($cardParameters['container_wrap'])
             <div class="container">
+                <div class="row">
         @endif
         
         <div class="text {{$cardParameters['text_col_size_class']}} my-auto px-4 {{$cardParameters['text_col_order_class']}}">
@@ -23,6 +24,7 @@
         
         
         @if ($cardParameters['container_wrap'])
+                </div>
             </div>
         @endif
     </div>
