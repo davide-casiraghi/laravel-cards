@@ -37,19 +37,22 @@ You can install the package via composer:
 ### Publish all the vendor files
 ```php artisan vendor:publish --force```
 
-### Configuration
-
-You can add the configuration parameters about your content model in the configuration file.
-```bash
-/config/laravel-cards.php
-```
-
 ### Import the _card.scss file in /resources/scss/app.scss
 ```php
 @import 'vendor/laravel-cards/card';
 ```
 
 ## Usage
+
+### Access to the package
+After the package is published this new route will be available:
+
+/laravel-cards
+
+Accessing to this routes you can manage the cards.
+
+
+Then to replace all the occurrance of the card snippets:
 
 ``` php
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;  
