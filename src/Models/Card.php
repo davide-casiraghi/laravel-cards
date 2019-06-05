@@ -11,7 +11,7 @@ class Card extends Model
 
     use Translatable;
 
-    public $translatedAttributes = ['heading','title', 'body', 'button_text','image_alt'];
+    public $translatedAttributes = ['heading', 'title', 'body', 'button_text', 'image_alt'];
     protected $fillable = [
         'image_file_name',
         'img_alignment',

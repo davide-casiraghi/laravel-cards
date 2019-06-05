@@ -4,7 +4,7 @@
 
         /* Cards */
         Route::resource('laravel-cards', 'CardController');
-        
+
         /* Card translations */
         Route::get('laravel-cards-translation/{imageId}/{languageCode}/create', 'CardTranslationController@create')->name('laravel-cards-translation.create');
         Route::get('laravel-cards-translation/{imageId}/{languageCode}/edit', 'CardTranslationController@edit')->name('laravel-cards-translation.edit');

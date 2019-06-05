@@ -2,8 +2,8 @@
 
 namespace DavideCasiraghi\LaravelCards;
 
-use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use Illuminate\Support\ServiceProvider;
 
 class LaravelCardsServiceProvider extends ServiceProvider
 {
@@ -19,7 +19,6 @@ class LaravelCardsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
 
         if (! class_exists('CreateCardsTable')) {
             $this->publishes([

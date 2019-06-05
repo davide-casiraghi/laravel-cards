@@ -11,13 +11,13 @@ class CreateCardTranslationsTable extends Migration
         Schema::create('card_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('card_id')->unsigned();
-            
+
             $table->string('heading')->nullable();
             $table->string('title')->nullable();
             $table->text('body')->nullable();
             $table->string('button_text')->nullable();
             $table->string('image_alt')->nullable();
-            
+
             $table->string('locale')->index();
             $table->unique(['card_id', 'locale']);
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');

@@ -15,7 +15,7 @@ class CreateCardsTable extends Migration
             $table->integer('img_col_size')->nullable();
             $table->string('bkg_color')->nullable();
             $table->string('text_color')->nullable();
-            
+
             $table->string('button_url')->nullable();
             $table->string('button_color')->nullable();
             $table->string('button_corners')->nullable();
