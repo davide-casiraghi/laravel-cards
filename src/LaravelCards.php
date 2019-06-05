@@ -40,12 +40,7 @@ class LaravelCards
     {
         $re = '/{\#
                 \h+card
-                \h+(card_id|img_alignment|img_col_size|bkg_color|text_color|container_wrap)=\[([^]]*)]
-                \h+((?1))=\[([^]]*)]
-                \h+((?1))=\[([^]]*)] 
-                \h+((?1))=\[([^]]*)]
-                \h+((?1))=\[([^]]*)] 
-                \h+((?1))=\[([^]]*)] 
+                \h+(card_id)=\[([^]]*)]
                 \h*\#}/x';
 
         if (preg_match_all($re, $text, $matches, PREG_SET_ORDER, 0)) {
