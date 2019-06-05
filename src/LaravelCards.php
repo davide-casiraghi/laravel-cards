@@ -72,85 +72,9 @@ class LaravelCards
         //dump($matches);
 
         $ret['card_id'] = $matches[2];
-        $ret['img_col_size_class'] = 'col-md-'.$matches[6];
-        $textColSize = 12 - $matches[6];
-        $ret['text_col_size_class'] = 'col-md-'.$textColSize;
-        $backgroundColor = $matches[8];
-        $ret['bkg_color'] = 'background-color: '.$backgroundColor.';';
-        $textColor = $matches[10];
-        $ret['text_color'] = 'color: '.$textColor.';';
-        $containerWrap = $matches[12];
-        $ret['container_wrap'] = ($containerWrap == 'true') ? 1 : 0;
-
-        //dd($ret['bkg_color']);
-        // Image alignment
-        //$ret['img_alignment'] = $matches[4];
-        $imageAlignment = $matches[4];
-
-        switch ($imageAlignment) {
-             case 'left':
-                 $ret['img_col_order_class'] = 'order-md-1';
-                 $ret['text_col_order_class'] = 'order-md-2';
-                 break;
-             case 'right':
-                 $ret['img_col_order_class'] = 'order-md-2';
-                 $ret['text_col_order_class'] = 'order-md-1';
-                 break;
-         }
-
-        //dump($ret);
 
         return $ret;
     }
-
-    /**************************************************************************/
-
-    /**
-     *  Prepare the card HTML.
-     *
-     *  @param array $parameters
-     *  @param \DavideCasiraghi\LaravelCards\Models\Card $card
-     *
-     *  @return string $ret
-     **/
-    /*public static function prepareCardHtml($parameters, $card)
-    {
-        if (! is_null($card)) {
-            $ret = "<div class='row laravel-card' style='".$parameters['bkg_color'].' '.$parameters['text_color']."'>";
-            if ($parameters['container_wrap']) {
-                $ret .= "<div class='container'>";
-            }
-            $ret .= "<div class='text ".$parameters['text_col_size_class'].' my-auto px-4 '.$parameters['text_col_order_class']."'>";
-            $ret .= "<h2 class='laravel-card-heading mt-5'>".$card['title'].'</h2>';
-            $ret .= "<div class='lead mb-4'>".$card['body'].'</div>';
-            $ret .= '</div>';
-
-            if (! empty($card['introimage'])) {
-                $ret .= "<div class='image d-none d-md-block ".$parameters['img_col_size_class'].' '.$parameters['img_col_order_class']."'
-                        style='
-                        background-size: cover;
-                        background-image: url(/storage/images/cards_intro_images/".$card['introimage'].");
-                        min-height: 400px;
-                        background-position: 50% 50%;
-                        '>";
-                $ret .= '</div>';
-
-                $ret .= "<div class='image col-12 d-md-none ".$parameters['img_col_order_class']."'>";
-                $ret .= "<img class='laravel-card-image img-fluid mx-auto' src='/storage/images/cards_intro_images/".$card['introimage']."' alt='".$card['introimage_alt']."'>";
-                $ret .= '</div>';
-            }
-
-
-            if ($parameters['container_wrap']) {
-                $ret .= '</div>';
-            }
-            $ret .= '</div>';
-        } else {
-            $ret = "<div class='alert alert-warning' role='alert'>The card with id ".$parameters['card_id'].' has not been found.</div>';
-        }
-
-        return $ret;
-    }*/
 
     /**************************************************************************/
 
@@ -202,39 +126,30 @@ class LaravelCards
 
     /**
      * Return an array with the parameters for the show-card.
-     * @param  \DavideCasiraghi\LaravelJumbotronImages\Models\JumbotronImage  $jumbotronImage
+     * @param  \DavideCasiraghi\LaravelJumbotronImages\Models\Card  $card
      * @return array
      */
-    public static function getParametersArray($jumbotronImage)
+    public static function getParametersArray($card)
     {
         $ret = [
-             'cover_opacity' => 'opacity: '.$jumbotronImage->cover_opacity.';',
-             'background_color' => 'background: #'.$jumbotronImage->background_color.';',
-             'image' => 'background-image:url(/storage/images/jumbotron_images/'.$jumbotronImage->image_file_name.');',
-             'text_horizontal_alignment' => 'text-align: '.$jumbotronImage->text_horizontal_alignment.';',
+             'img_col_size_class' => 'col-md-'.$card->img_col_size;
+             'text_col_size_class' => 'col-md-'.(12-$card->img_col_size);
+             'bkg_color' => 'background-color: '.$card->bkg_color.';';
+             'text_color' => 'color: '.$card->text_color.';';
+             'container_wrap' => ($card->container_wrap == 'true') ? 1 : 0;
          ];
-        $ret['white_moon'] = ($jumbotronImage->white_moon == 1) ? ' moon-curve ' : '';
-        $ret['scroll_down_arrow'] = ($jumbotronImage->scroll_down_arrow == 1) ? "<div class='scroll-arrow white'><span>SCROLL DOWN</span><img src='/vendor/laravel-jumbotron-images/assets/images/angle-down-regular.svg'></div>" : '';
-
-        /* Parallax - The element is defined with stellar plugin like: <section class="parallax" data-stellar-background-ratio="0.5" ><span>Summer</span></section>*/
-        $ret['parallax'] = ($jumbotronImage->parallax == 1) ? ' parallax' : '';
-        $ret['parallax_ratio'] = ($jumbotronImage->parallax == 1) ? "data-stellar-background-ratio='0.5'" : '';
-
-        /* Text Width */
-        if ($jumbotronImage->text_width != 100) {
-            switch ($jumbotronImage->text_horizontal_alignment) {
-                case 'left':	// Left
-                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%;';
-                break;
-                case 'center': // Center
-                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%; margin: auto;';
-                break;
-                case 'right': // Right
-                    $ret['text_width'] = 'width: '.$jumbotronImage->text_width.'%; float: right;';
-                break;
-            }
-        }
-
+         
+        switch ($card->img_alignment) {
+             case 'left':
+                 $ret['img_col_order_class'] = 'order-md-1';
+                 $ret['text_col_order_class'] = 'order-md-2';
+                 break;
+             case 'right':
+                 $ret['img_col_order_class'] = 'order-md-2';
+                 $ret['text_col_order_class'] = 'order-md-1';
+                 break;
+         }
+        
         return $ret;
     }
 

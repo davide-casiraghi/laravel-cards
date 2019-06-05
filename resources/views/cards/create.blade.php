@@ -65,8 +65,8 @@
                               'name' => 'img_alignment',
                               'placeholder' => "choose one...", 
                               'records' => [
-                                 '1' => 'Left',
-                                 '2' => 'Right',
+                                 'left' => 'Left',
+                                 'right' => 'Right',
                               ],
                               'liveSearch' => 'false',
                               'mobileNativeMenu' => true,
