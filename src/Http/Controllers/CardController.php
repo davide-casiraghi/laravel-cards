@@ -75,7 +75,7 @@ class CardController
 
         $this->saveOnDb($request, $card);
 
-        return redirect()->route('card-images.index')
+        return redirect()->route('laravel-cards.index')
                             ->with('success', 'Card image added succesfully');
     }
 
@@ -128,7 +128,7 @@ class CardController
 
         $this->saveOnDb($request, $card);
 
-        return redirect()->route('card-images.index')
+        return redirect()->route('laravel-cards.index')
                             ->with('success', 'Card image updated succesfully');
     }
 
@@ -145,7 +145,7 @@ class CardController
         $card = Card::find($cardId);
         $card->delete();
 
-        return redirect()->route('card-images.index')
+        return redirect()->route('laravel-cards.index')
                             ->with('success', 'Card image deleted succesfully');
     }
 
@@ -168,7 +168,7 @@ class CardController
         $card->img_alignment = $request->get('img_alignment');
         $card->img_col_size = $request->get('img_col_size');
         $card->img_col_size = $request->get('img_col_size');
-        $card->background_color = $request->get('background_color');        
+        $card->bkg_color = $request->get('bkg_color');        
         $card->button_url = $request->get('button_url');
         $card->button_color = $request->get('button_color');
         $card->button_corners = $request->get('button_corners');

@@ -97,10 +97,10 @@
                     <div class="col-12">
                         @include('laravel-form-partials::input', [
                             'title' =>  'Background color',
-                            'name' => 'background_color',
+                            'name' => 'bkg_color',
                             'tooltip' => 'Exadecimal value for the background color. Active if a value is specified.',
                             'placeholder' => '#HEX', 
-                            'value' => $card->background_color,
+                            'value' => $card->bkg_color,
                             'required' => false,
                         ])
                     </div>

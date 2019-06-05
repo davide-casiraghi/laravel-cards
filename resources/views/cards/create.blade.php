@@ -100,10 +100,10 @@
                     <div class="col-12">
                         @include('laravel-form-partials::input', [
                             'title' =>  'Background color',
-                            'name' => 'background_color',
+                            'name' => 'bkg_color',
                             'tooltip' => 'Exadecimal value for the background color. Active if a value is specified.',
                             'placeholder' => '#HEX', 
-                            'value' => old('background_color'),
+                            'value' => old('bkg_color'),
                             'required' => false,
                         ])
                     </div>
