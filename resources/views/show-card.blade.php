@@ -30,5 +30,5 @@
     </div>
     
 @else
-    <div class="alert alert-warning" role="alert">The card with id {{$cardParameters['card_id']}} has not been found.</div>
+    <div class="alert alert-warning" role="alert">The card with the specified id has not been found.</div>
 @endif

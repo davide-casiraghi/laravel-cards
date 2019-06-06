@@ -91,9 +91,9 @@ class LaravelCards
                 $snippetParameters = self::getSnippetParameters($single_gallery_matches);
                 //dd("aaa");
                 $card = self::getCard($snippetParameters['card_id']);
-                
+                //dd($card);
                 $cardParameters = ($card) ? $this->getParametersArray($card) : null;
-
+                
                 $cardView = self::showCard($card, $cardParameters);
                 $cardHtml = $cardView->render();
 
