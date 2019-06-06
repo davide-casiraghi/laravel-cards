@@ -3,6 +3,7 @@
 namespace DavideCasiraghi\LaravelCards\Tests;
 
 use DavideCasiraghi\LaravelCards\Models\Card;
+use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 
 class LaravelCardsTest extends TestCase
@@ -32,14 +33,29 @@ class LaravelCardsTest extends TestCase
     /** @test */
     public function it_gets_the_parameter_array()
     {
-        $text = 'Lorem ipsum {# card card_id=[6] #} sid amet.
-                 Lorem ipsum {# card card_id=[8] #}.
-        ';
-        $matches = LaravelCards::getCardSnippetOccurrences($text);
-        $parameters = LaravelCards::getParametersArray($matches[0]);
+        $id = Card::insertGetId([
+            'image_file_name' => 'test image name',
+            'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',        
+        ]);
+
+        CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading',
+            'title' => 'test title',
+            'body' => 'test body',
+            'button_text' => 'test button text',
+            'locale' => 'en',
+        ]);
+        
+        $card = Card::where('id', 1)->first();
+        $parameters = LaravelCards::getParametersArray($card);
         //dd($parameters);
 
-        $this->assertEquals($parameters['bkg_color'], 'background-color: #345642;');
+        $this->assertEquals($parameters['bkg_color'], 'background-color: #FF00FF;');
         $this->assertEquals($parameters['img_col_size_class'], 'col-md-3');
     }
 

@@ -85,11 +85,13 @@ class LaravelCards
     public function replace_card_snippets_with_template($text)
     {
         $matches = self::getCardSnippetOccurrences($text);
-
+        
         if ($matches) {
             foreach ($matches as $key => $single_gallery_matches) {
                 $snippetParameters = self::getSnippetParameters($single_gallery_matches);
+                //dd("aaa");
                 $card = self::getCard($snippetParameters['card_id']);
+                
                 $cardParameters = ($card) ? $this->getParametersArray($card) : null;
 
                 $cardView = self::showCard($card, $cardParameters);
