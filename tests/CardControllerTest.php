@@ -18,9 +18,9 @@ class CardControllerTest extends TestCase
     public function it_displays_the_cards_index_page()
     {
         $this->authenticateAsAdmin();
-        $this->get('cards')->dump();
-            //->assertViewIs('laravel-cards::cards.index')
-            //->assertStatus(200);
+        $this->get('laravel-cards')
+            ->assertViewIs('laravel-cards::cards.index')
+            ->assertStatus(200);
     }
     
 }
