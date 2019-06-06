@@ -3,8 +3,8 @@
 namespace DavideCasiraghi\LaravelCards\Tests;
 
 use DavideCasiraghi\LaravelCards\Models\Card;
-use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
+use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 
 class LaravelCardsTest extends TestCase
 {
@@ -39,7 +39,7 @@ class LaravelCardsTest extends TestCase
             'img_col_size'  => '3',
             'bkg_color'  => '#FF00FF',
             'text_color'  => '#2365AA',
-            'container_wrap'  => '1',        
+            'container_wrap'  => '1',
         ]);
 
         CardTranslation::insert([
@@ -50,7 +50,7 @@ class LaravelCardsTest extends TestCase
             'button_text' => 'test button text',
             'locale' => 'en',
         ]);
-        
+
         $card = Card::where('id', 1)->first();
         $parameters = LaravelCards::getParametersArray($card);
         //dd($parameters);
@@ -81,7 +81,7 @@ class LaravelCardsTest extends TestCase
             'img_col_size'  => '3',
             'bkg_color'  => '#FF00FF',
             'text_color'  => '#2365AA',
-            'container_wrap'  => '1',        
+            'container_wrap'  => '1',
         ]);
 
         CardTranslation::insert([
@@ -92,7 +92,7 @@ class LaravelCardsTest extends TestCase
             'button_text' => 'test button text',
             'locale' => 'en',
         ]);
-        
+
         $cardId_2 = Card::insertGetId([
             'image_file_name' => 'image_test_2.jpg',
             'img_alignment' => 'left',
@@ -100,7 +100,7 @@ class LaravelCardsTest extends TestCase
             'img_col_size'  => '3',
             'bkg_color'  => '#FF00FF',
             'text_color'  => '#2365AA',
-            'container_wrap'  => '1',        
+            'container_wrap'  => '1',
         ]);
 
         CardTranslation::insert([
