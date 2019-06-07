@@ -2,13 +2,15 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Orchestra\Testbench\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 use DavideCasiraghi\LaravelJumbotronImages\LaravelJumbotronImagesServiceProvider;
 
 class CardTranslationControllerTest extends TestCase
 {
+    use WithFaker;
+    
     /** @test */
     public function the_route_create_translation_can_be_accessed()
     {

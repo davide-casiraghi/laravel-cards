@@ -13,16 +13,16 @@ class CardTranslationController
 
     /**
      * Show the form for creating a new resource.
-     * @param int $jumbotronImageId
+     * @param int $cardId
      * @param string $languageCode
      * @return \Illuminate\Http\Response
      */
-    public function create($jumbotronImageId, $languageCode)
+    public function create($cardId, $languageCode)
     {
         $selectedLocaleName = $this->getSelectedLocaleName($languageCode);
 
         return view('laravel-cards::cardsTranslations.create')
-                ->with('jumbotronImageId', $jumbotronImageId)
+                ->with('cardId', $cardId)
                 ->with('languageCode', $languageCode)
                 ->with('selectedLocaleName', $selectedLocaleName);
     }
@@ -32,20 +32,20 @@ class CardTranslationController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $jumbotronImageTranslationId
+     * @param int $cardTranslationId
      * @param string $languageCode
      * @return \Illuminate\Http\Response
      */
-    public function edit($jumbotronImageId, $languageCode)
+    public function edit($cardId, $languageCode)
     {
-        $jumbotronImageTranslation = CardTranslation::where('card_id', $jumbotronImageId)
+        $cardTranslation = CardTranslation::where('card_id', $cardId)
                         ->where('locale', $languageCode)
                         ->first();
 
         $selectedLocaleName = $this->getSelectedLocaleName($languageCode);
 
-        return view('laravel-cards::cardsTranslations.edit', compact('jumbotronImageTranslation'))
-                    ->with('jumbotronImageId', $jumbotronImageId)
+        return view('laravel-cards::cardsTranslations.edit', compact('cardTranslation'))
+                    ->with('cardId', $cardId)
                     ->with('languageCode', $languageCode)
                     ->with('selectedLocaleName', $selectedLocaleName);
     }
@@ -69,12 +69,12 @@ class CardTranslationController
             return back()->withErrors($validator)->withInput();
         }*/
 
-        $jumbotronImageTranslation = new CardTranslation();
+        $cardTranslation = new CardTranslation();
 
-        $this->saveOnDb($request, $jumbotronImageTranslation, 'save');
+        $this->saveOnDb($request, $cardTranslation, 'save');
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron Image translation added succesfully');
+        return redirect()->route('laravel-cards.index')
+                            ->with('success', 'Card translation added succesfully');
     }
 
     /***************************************************************************/
@@ -83,21 +83,21 @@ class CardTranslationController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $jumbotronImageTranslationId
+     * @param  int  $cardTranslationId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $jumbotronImageTranslationId)
+    public function update(Request $request, $cardTranslationId)
     {
         /*request()->validate([
             'text' => 'required',
         ]);*/
 
-        $jumbotronImageTranslation = CardTranslation::find($jumbotronImageTranslationId);
-        //dd($jumbotronImageTranslation);
-        $this->saveOnDb($request, $jumbotronImageTranslation, 'update');
+        $cardTranslation = CardTranslation::find($cardTranslationId);
+        //dd($cardTranslation);
+        $this->saveOnDb($request, $cardTranslation, 'update');
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron Image translation added succesfully');
+        return redirect()->route('laravel-cards.index')
+                            ->with('success', 'Card translation added succesfully');
     }
 
     /***************************************************************************/
@@ -105,23 +105,23 @@ class CardTranslationController
     /**
      * Save the record on DB.
      * @param  \Illuminate\Http\Request  $request
-     * @param  \DavideCasiraghi\LaravelCards\Models\CardTranslation  $jumbotronImageTranslation
+     * @param  \DavideCasiraghi\LaravelCards\Models\CardTranslation  $cardTranslation
      * @return void
      */
-    public function saveOnDb($request, $jumbotronImageTranslation, $saveOrUpdate)
+    public function saveOnDb($request, $cardTranslation, $saveOrUpdate)
     {
-        $jumbotronImageTranslation->title = $request->get('title');
-        $jumbotronImageTranslation->body = $request->get('body');
-        $jumbotronImageTranslation->button_text = $request->get('button_text');
+        $cardTranslation->title = $request->get('title');
+        $cardTranslation->body = $request->get('body');
+        $cardTranslation->button_text = $request->get('button_text');
 
         switch ($saveOrUpdate) {
             case 'save':
-                $jumbotronImageTranslation->card_id = $request->get('card_id');
-                $jumbotronImageTranslation->locale = $request->get('language_code');
-                $jumbotronImageTranslation->save();
+                $cardTranslation->card_id = $request->get('card_id');
+                $cardTranslation->locale = $request->get('language_code');
+                $cardTranslation->save();
                 break;
             case 'update':
-                $jumbotronImageTranslation->update();
+                $cardTranslation->update();
                 break;
         }
     }
@@ -147,14 +147,14 @@ class CardTranslationController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $jumbotronImageTranslationId
+     * @param  int  $cardTranslationId
      */
-    public function destroy($jumbotronImageTranslationId)
+    public function destroy($cardTranslationId)
     {
-        $jumbotronImageTranslation = CardTranslation::find($jumbotronImageTranslationId);
-        $jumbotronImageTranslation->delete();
+        $cardTranslation = CardTranslation::find($cardTranslationId);
+        $cardTranslation->delete();
 
-        return redirect()->route('jumbotron-images.index')
-                            ->with('success', 'Jumbotron Image translation deleted succesfully');
+        return redirect()->route('laravel-cards.index')
+                            ->with('success', 'Card translation deleted succesfully');
     }
 }
