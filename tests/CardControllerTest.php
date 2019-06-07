@@ -23,4 +23,13 @@ class CardControllerTest extends TestCase
             ->assertStatus(200);
     }
     
+    /** @test */
+    public function it_displays_the_card_create_page()
+    {
+        $this->authenticateAsAdmin();
+        $this->get('laravel-cards/create')->dump();
+            //->assertViewIs('laravel-cards::cards.create')
+            //->assertStatus(200);
+    }
+    
 }
