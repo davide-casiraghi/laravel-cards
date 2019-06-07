@@ -77,27 +77,32 @@ class CardTranslationControllerTest extends TestCase
     }
 
     /** @test */
-    /*public function the_route_store_translation_can_be_accessed()
+    public function the_route_store_translation_can_be_accessed()
     {
         $id = Card::insertGetId([
-            'image_file_name' => 'imageFileName.jpg',
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
         ]);
 
         $data = [
-            'jumbotron_image_id' => $id,
+            'card_id' => $id,
             'language_code' => 'es',
             'title' => 'test title spanish',
             'body' => 'test body spanish',
-            'button_text' => 'test button text spanish ',
+            'button_text' => 'test button text spanish',
         ];
 
         $this
             ->followingRedirects()
             ->post('/laravel-cards-translation', $data);
 
-        $this->assertDatabaseHas('jumbotron_images', ['image_file_name' => 'imageFileName.jpg']);
-    }*/
+        $this->assertDatabaseHas('cards', ['image_file_name' => 'image_test_1.jpg']);
+    }
 
     /** @test */
     /*public function the_route_destroy_can_be_accessed()
