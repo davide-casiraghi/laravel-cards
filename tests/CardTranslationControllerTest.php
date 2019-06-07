@@ -140,34 +140,41 @@ class CardTranslationControllerTest extends TestCase
     }
 
     /** @test */
-    /*public function the_route_update_can_be_accessed()
+    public function the_route_update_can_be_accessed()
     {
         $id = Card::insertGetId([
-            'image_file_name' => 'test image name',
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
         ]);
 
         CardTranslation::insert([
-            'jumbotron_image_id' => $id,
+            'card_id' => $id,
+            'heading' => 'test heading',
             'title' => 'test title',
             'body' => 'test body',
             'button_text' => 'test button text',
             'locale' => 'en',
         ]);
 
-        $translationId = CardTranslation::insertGetId([
-            'jumbotron_image_id' => $id,
+        $translationId = CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading spanish',
             'title' => 'test title spanish',
             'body' => 'test body spanish',
-            'button_text' => 'test button text spanish ',
+            'button_text' => 'test button text spanish',
             'locale' => 'es',
         ]);
 
         $request = new \Illuminate\Http\Request();
         $request->replace([
-            'jumbotron_image_translation_id' => $translationId,
-            'jumbotron_image_id' => $id,
-            'text' => 'test spanish text updated',
+            'card_translation_id' => $translationId,
+            'card_id' => $id,
+            'body' => 'test spanish text updated',
             'language_code' => 'es',
          ]);
 
@@ -175,5 +182,5 @@ class CardTranslationControllerTest extends TestCase
                  ->assertStatus(302);
 
         //$this->assertDatabaseHas('quote_translations', ['text' => 'test spanish text updated']);
-    }*/
+    }
 }
