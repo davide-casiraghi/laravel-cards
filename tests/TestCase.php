@@ -56,7 +56,7 @@ abstract class TestCase extends BaseTestCase
             'LaravelFormPartials' => \DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials::class,
         ];
     }
-    
+
     // Authenticate the user
     public function authenticate()
     {

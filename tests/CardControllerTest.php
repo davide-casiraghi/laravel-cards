@@ -2,18 +2,16 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
-use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
-use Illuminate\Support\Facades\Storage;
 use DavideCasiraghi\LaravelCards\Http\Controllers\CardController;
-
-use Illuminate\Foundation\Testing\WithFaker;
 
 class CardControllerTest extends TestCase
 {
     use WithFaker;
-    
+
     /***************************************************************/
 
     /** @test */
@@ -24,7 +22,7 @@ class CardControllerTest extends TestCase
             ->assertViewIs('laravel-cards::cards.index')
             ->assertStatus(200);
     }
-    
+
     /** @test */
     public function the_route_create_can_be_accessed()
     {
@@ -33,7 +31,7 @@ class CardControllerTest extends TestCase
             ->assertViewIs('laravel-cards::cards.create')
             ->assertStatus(200);
     }
-    
+
     /** @test */
     public function the_route_destroy_can_be_accessed()
     {
@@ -59,7 +57,7 @@ class CardControllerTest extends TestCase
         $this->delete('laravel-cards/1')
             ->assertStatus(302);
     }
-    
+
     /** @test */
     public function the_route_update_can_be_accessed()
     {
@@ -91,7 +89,7 @@ class CardControllerTest extends TestCase
         $this->put('laravel-cards/1', [$request, 1])
              ->assertStatus(302);
     }
-    
+
     /** @test */
     public function the_route_store_can_be_accessed()
     {
@@ -110,7 +108,7 @@ class CardControllerTest extends TestCase
 
         $this->assertDatabaseHas('cards', ['image_file_name' => 'test.jpg']);
     }
-    
+
     /** @test */
     public function the_route_show_can_be_accessed()
     {
@@ -138,7 +136,7 @@ class CardControllerTest extends TestCase
             ->assertViewHas('cardParameters')
             ->assertStatus(200);
     }
-    
+
     /** @test */
     public function the_route_edit_can_be_accessed()
     {
@@ -166,7 +164,7 @@ class CardControllerTest extends TestCase
             ->assertViewHas('card')
             ->assertStatus(200);
     }
-    
+
     /** @test */
     public function it_uploads_an_image()
     {
@@ -204,5 +202,4 @@ class CardControllerTest extends TestCase
 
         Storage::assertExists($filePath);
     }
-    
 }
