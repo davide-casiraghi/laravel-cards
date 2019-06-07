@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class CardControllerTranslationController
+class CardTranslationController
 {
     /***************************************************************************/
 
