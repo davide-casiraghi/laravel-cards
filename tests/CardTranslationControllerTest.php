@@ -5,7 +5,7 @@ namespace DavideCasiraghi\LaravelCards\Tests;
 use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
-use DavideCasiraghi\LaravelJumbotronImages\LaravelJumbotronImagesServiceProvider;
+use DavideCasiraghi\LaravelCards\LaravelCardsServiceProvider;
 
 class CardTranslationControllerTest extends TestCase
 {
@@ -39,39 +39,47 @@ class CardTranslationControllerTest extends TestCase
     }
 
     /** @test */
-    /*public function the_route_edit_translation_can_be_accessed()
+    public function the_route_edit_translation_can_be_accessed()
     {
-        $id = JumbotronImage::insertGetId([
-            'image_file_name' => 'test image name',
+        $id = Card::insertGetId([
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
         ]);
-        JumbotronImageTranslation::insert([
-            'jumbotron_image_id' => $id,
+
+        CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading',
             'title' => 'test title',
             'body' => 'test body',
             'button_text' => 'test button text',
             'locale' => 'en',
         ]);
 
-        JumbotronImageTranslation::insert([
-            'jumbotron_image_id' => $id,
+        CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading spanish',
             'title' => 'test title spanish',
             'body' => 'test body spanish',
-            'button_text' => 'test button text spanish ',
+            'button_text' => 'test button text spanish',
             'locale' => 'es',
         ]);
 
         $this->get('laravel-cards-translation/'.$id.'/es/edit')
             ->assertViewIs('laravel-cards::cardsTranslations.edit')
-            ->assertViewHas('jumbotronImageId')
+            ->assertViewHas('cardId')
             ->assertViewHas('languageCode')
             ->assertStatus(200);
-    }*/
+    }
 
     /** @test */
     /*public function the_route_store_translation_can_be_accessed()
     {
-        $id = JumbotronImage::insertGetId([
+        $id = Card::insertGetId([
             'image_file_name' => 'imageFileName.jpg',
             'button_url' => 'test button url',
         ]);
@@ -94,11 +102,11 @@ class CardTranslationControllerTest extends TestCase
     /** @test */
     /*public function the_route_destroy_can_be_accessed()
     {
-        $id = JumbotronImage::insertGetId([
+        $id = Card::insertGetId([
             'image_file_name' => 'test image name',
             'button_url' => 'test button url',
         ]);
-        JumbotronImageTranslation::insert([
+        CardTranslation::insert([
             'jumbotron_image_id' => $id,
             'title' => 'test title',
             'body' => 'test body',
@@ -106,7 +114,7 @@ class CardTranslationControllerTest extends TestCase
             'locale' => 'en',
         ]);
 
-        JumbotronImageTranslation::insert([
+        CardTranslation::insert([
             'jumbotron_image_id' => $id,
             'title' => 'test title spanish',
             'body' => 'test body spanish',
@@ -121,12 +129,12 @@ class CardTranslationControllerTest extends TestCase
     /** @test */
     /*public function the_route_update_can_be_accessed()
     {
-        $id = JumbotronImage::insertGetId([
+        $id = Card::insertGetId([
             'image_file_name' => 'test image name',
             'button_url' => 'test button url',
         ]);
 
-        JumbotronImageTranslation::insert([
+        CardTranslation::insert([
             'jumbotron_image_id' => $id,
             'title' => 'test title',
             'body' => 'test body',
@@ -134,7 +142,7 @@ class CardTranslationControllerTest extends TestCase
             'locale' => 'en',
         ]);
 
-        $translationId = JumbotronImageTranslation::insertGetId([
+        $translationId = CardTranslation::insertGetId([
             'jumbotron_image_id' => $id,
             'title' => 'test title spanish',
             'body' => 'test body spanish',
