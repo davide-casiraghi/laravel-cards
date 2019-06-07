@@ -1,6 +1,6 @@
 <?php
 
-namespace Davidecasiraghi\LaravelCards\Tests;
+namespace DavideCasiraghi\LaravelCards\Tests;
 
 use Orchestra\Testbench\TestCase;
 use DavideCasiraghi\LaravelCards\Models\Card;
