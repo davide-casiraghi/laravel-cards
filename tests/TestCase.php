@@ -44,6 +44,7 @@ abstract class TestCase extends BaseTestCase
             LaravelCardsServiceProvider::class,
             \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
             \Dimsav\Translatable\TranslatableServiceProvider::class,
+            \DavideCasiraghi\LaravelFormPartials\LaravelFormPartialsServiceProvider::class,
         ];
     }
 
@@ -52,6 +53,7 @@ abstract class TestCase extends BaseTestCase
         return [
             'LaravelCards' => LaravelCards::class, // facade called PhpResponsiveQuote and the name of the facade class
             'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+            'LaravelFormPartials' => \DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials::class,
         ];
     }
     
