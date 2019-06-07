@@ -36,7 +36,8 @@ class CardControllerTest extends TestCase
     public function the_route_destroy_can_be_accessed()
     {
         $id = Card::insertGetId([
-            'image_file_name' => 'test image name',
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
             'img_col_size'  => '3',
             'bkg_color'  => '#FF00FF',
@@ -61,7 +62,8 @@ class CardControllerTest extends TestCase
     public function the_route_update_can_be_accessed()
     {
         $id = Card::insertGetId([
-            'image_file_name' => 'test image name',
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
             'img_col_size'  => '3',
             'bkg_color'  => '#FF00FF',
@@ -105,6 +107,34 @@ class CardControllerTest extends TestCase
             ->post('/laravel-cards', $data);
 
         $this->assertDatabaseHas('cards', ['image_file_name' => 'test.jpg']);
+    }
+    
+    /** @test */
+    public function the_route_show_can_be_accessed()
+    {
+        $id = Card::insertGetId([
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
+            'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
+        ]);
+
+        CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading',
+            'title' => 'test title',
+            'body' => 'test body',
+            'button_text' => 'test button text',
+            'locale' => 'en',
+        ]);
+
+        $this->get('laravel-cards/1')
+            ->assertViewIs('laravel-cards::cards.show')
+            ->assertViewHas('cardParameters')
+            ->assertStatus(200);
     }
     
 }

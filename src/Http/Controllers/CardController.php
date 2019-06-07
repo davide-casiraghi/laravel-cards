@@ -93,7 +93,7 @@ class CardController
         //$card = Card::find($cardId);
         $card = LaravelCards::getCard($cardId);
         $cardParameters = ($card) ? (LaravelCards::getParametersArray($card)) : null;
-
+        
         return view('laravel-cards::cards.show', compact('card'))
                 ->with('cardParameters', $cardParameters);
     }
