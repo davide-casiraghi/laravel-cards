@@ -5,12 +5,11 @@ namespace DavideCasiraghi\LaravelCards\Tests;
 use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
-use DavideCasiraghi\LaravelCards\LaravelCardsServiceProvider;
 
 class CardTranslationControllerTest extends TestCase
 {
     use WithFaker;
-    
+
     /** @test */
     public function the_route_create_translation_can_be_accessed()
     {
