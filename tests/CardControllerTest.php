@@ -137,4 +137,32 @@ class CardControllerTest extends TestCase
             ->assertStatus(200);
     }
     
+    /** @test */
+    public function the_route_edit_can_be_accessed()
+    {
+        $id = Card::insertGetId([
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
+            'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
+        ]);
+
+        CardTranslation::insert([
+            'card_id' => $id,
+            'heading' => 'test heading',
+            'title' => 'test title',
+            'body' => 'test body',
+            'button_text' => 'test button text',
+            'locale' => 'en',
+        ]);
+
+        $this->get('laravel-cards/1/edit')
+            ->assertViewIs('laravel-cards::cards.edit')
+            ->assertViewHas('card')
+            ->assertStatus(200);
+    }
+    
 }
