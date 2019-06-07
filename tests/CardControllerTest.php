@@ -88,4 +88,23 @@ class CardControllerTest extends TestCase
              ->assertStatus(302);
     }
     
+    /** @test */
+    public function the_route_store_can_be_accessed()
+    {
+        $data = [
+            'image_file_name' => 'test.jpg',
+            'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
+        ];
+
+        $this
+            ->followingRedirects()
+            ->post('/laravel-cards', $data);
+
+        $this->assertDatabaseHas('cards', ['image_file_name' => 'test.jpg']);
+    }
+    
 }
