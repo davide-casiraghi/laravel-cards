@@ -105,14 +105,21 @@ class CardTranslationControllerTest extends TestCase
     }
 
     /** @test */
-    /*public function the_route_destroy_can_be_accessed()
+    public function the_route_destroy_can_be_accessed()
     {
         $id = Card::insertGetId([
-            'image_file_name' => 'test image name',
+            'image_file_name' => 'image_test_1.jpg',
+            'img_alignment' => 'right',
             'button_url' => 'test button url',
+            'img_col_size'  => '3',
+            'bkg_color'  => '#FF00FF',
+            'text_color'  => '#2365AA',
+            'container_wrap'  => '1',
         ]);
+
         CardTranslation::insert([
-            'jumbotron_image_id' => $id,
+            'card_id' => $id,
+            'heading' => 'test heading',
             'title' => 'test title',
             'body' => 'test body',
             'button_text' => 'test button text',
@@ -120,16 +127,17 @@ class CardTranslationControllerTest extends TestCase
         ]);
 
         CardTranslation::insert([
-            'jumbotron_image_id' => $id,
+            'card_id' => $id,
+            'heading' => 'test heading spanish',
             'title' => 'test title spanish',
             'body' => 'test body spanish',
-            'button_text' => 'test button text spanish ',
+            'button_text' => 'test button text spanish',
             'locale' => 'es',
         ]);
 
         $this->delete('laravel-cards-translation/'.$id)
             ->assertStatus(302);
-    }*/
+    }
 
     /** @test */
     /*public function the_route_update_can_be_accessed()
