@@ -12,6 +12,13 @@ use DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials;
 
 class CardController
 {
+    
+    /* Restrict the access to this resource just to logged in users */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -26,25 +33,25 @@ class CardController
 
         if ($searchKeywords) {
             $cards = Card::
-                                select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
-                                ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
-                                ->orderBy('title')
-                                ->where('title', 'like', '%'.$searchKeywords.'%')
-                                ->where('locale', 'en')
-                                ->paginate(20);
+                        select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
+                        ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
+                        ->orderBy('title')
+                        ->where('title', 'like', '%'.$searchKeywords.'%')
+                        ->where('locale', 'en')
+                        ->paginate(20);
         } else {
             $cards = Card::
-                                select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
-                                ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
-                                ->where('locale', 'en')
-                                ->orderBy('title')
-                                ->paginate(20);
+                        select('card_translations.card_id AS id', 'title', 'body', 'button_text', 'image_file_name', 'button_url', 'locale')
+                        ->join('card_translations', 'cards.id', '=', 'card_translations.card_id')
+                        ->where('locale', 'en')
+                        ->orderBy('title')
+                        ->paginate(20);
         }
 
         return view('laravel-cards::cards.index', compact('cards'))
-                             ->with('i', (request()->input('page', 1) - 1) * 20)
-                             ->with('searchKeywords', $searchKeywords)
-                             ->with('countriesAvailableForTranslations', $countriesAvailableForTranslations);
+                     ->with('i', (request()->input('page', 1) - 1) * 20)
+                     ->with('searchKeywords', $searchKeywords)
+                     ->with('countriesAvailableForTranslations', $countriesAvailableForTranslations);
     }
 
     /***************************************************************************/

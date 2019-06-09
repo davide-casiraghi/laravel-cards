@@ -18,6 +18,8 @@ class CardControllerTest extends TestCase
     public function the_route_index_can_be_accessed()
     {
         $this->authenticateAsAdmin();
+        
+        $this->authenticateAsAdmin();
         $this->get('laravel-cards')
             ->assertViewIs('laravel-cards::cards.index')
             ->assertStatus(200);
@@ -26,6 +28,8 @@ class CardControllerTest extends TestCase
     /** @test */
     public function the_route_create_can_be_accessed()
     {
+        $this->authenticateAsAdmin();
+        
         $this->authenticateAsAdmin();
         $this->get('laravel-cards/create')
             ->assertViewIs('laravel-cards::cards.create')
@@ -61,6 +65,8 @@ class CardControllerTest extends TestCase
     /** @test */
     public function the_route_update_can_be_accessed()
     {
+        $this->authenticateAsAdmin();
+        
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',
@@ -93,6 +99,8 @@ class CardControllerTest extends TestCase
     /** @test */
     public function the_route_store_can_be_accessed()
     {
+        $this->authenticateAsAdmin();
+        
         $data = [
             'image_file_name' => 'test.jpg',
             'button_url' => 'test button url',
@@ -140,6 +148,8 @@ class CardControllerTest extends TestCase
     /** @test */
     public function the_route_edit_can_be_accessed()
     {
+        $this->authenticateAsAdmin();
+        
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',

@@ -19,6 +19,7 @@ class LaravelCardsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-cards');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->app['router']->aliasMiddleware('admin', \DavideCasiraghi\LaravelCards\Http\Middleware\Admin::class);
 
         if (! class_exists('CreateCardsTable')) {
             $this->publishes([
