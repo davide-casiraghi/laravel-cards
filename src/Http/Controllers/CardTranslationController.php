@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class CardTranslationController
+class CardTranslationController extends Controller
 {
     /***************************************************************************/
 
@@ -124,22 +124,6 @@ class CardTranslationController
                 $cardTranslation->update();
                 break;
         }
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Get the language name from language code.
-     *
-     * @param  string $languageCode
-     * @return string
-     */
-    public function getSelectedLocaleName($languageCode)
-    {
-        $countriesAvailableForTranslations = LaravelLocalization::getSupportedLocales();
-        $ret = $countriesAvailableForTranslations[$languageCode]['name'];
-
-        return $ret;
     }
 
     /***************************************************************************/
