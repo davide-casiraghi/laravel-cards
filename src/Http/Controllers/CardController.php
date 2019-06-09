@@ -8,6 +8,7 @@ use DavideCasiraghi\LaravelCards\Models\Card;
 use Intervention\Image\ImageManagerStatic as Image;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials;
 
 class CardController
 {
@@ -180,62 +181,12 @@ class CardController
         $card->container_wrap = ($request->container_wrap == 'on') ? 1 : 0;
 
         // Card image upload
-        if ($request->file('image_file_name')) {
-            $imageFile = $request->file('image_file_name');
-            $imageName = $imageFile->hashName();
-            $imageSubdir = 'cards';
-            $imageWidth = '1067';
-            $thumbWidth = '690';
-
-            $this->uploadImageOnServer($imageFile, $imageName, $imageSubdir, $imageWidth, $thumbWidth);
-            $card->image_file_name = $imageName;
-        } else {
-            $card->image_file_name = $request->image_file_name;
-        }
+        $imageSubdir = 'cards';
+        $imageWidth = '1067';
+        $thumbWidth = '690';
+        $card->image_file_name = LaravelFormPartials::uploadImageOnServer($request->file('image_file_name'), $request->image_file_name, $imageSubdir, $imageWidth, $thumbWidth);
 
         $card->save();
-    }
-
-    /***************************************************************************/
-
-    /**
-     * Upload image on server.
-     * $imageFile - the file to upload
-     * $imageSubdir is the subdir in /storage/app/public/images/..
-     *
-     * @param  array $imageFile
-     * @param  string $imageName
-     * @param  string $imageSubdir
-     * @param  string $imageWidth
-     * @param  string $thumbWidth
-     * @return void
-     */
-    public static function uploadImageOnServer($imageFile, $imageName, $imageSubdir, $imageWidth, $thumbWidth)
-    {
-
-        // Create dir if not exist (in /storage/app/public/images/..)
-        if (! \Storage::disk('public')->has('images/'.$imageSubdir.'/')) {
-            \Storage::disk('public')->makeDirectory('images/'.$imageSubdir.'/');
-        }
-
-        $destinationPath = 'app/public/images/'.$imageSubdir.'/';
-
-        // Resize the image with Intervention - http://image.intervention.io/api/resize
-        // -  resize and store the image to a width of 300 and constrain aspect ratio (auto height)
-        // - save file as jpg with medium quality
-        $image = Image::make($imageFile->getRealPath())
-                                ->resize((int) $imageWidth, null,
-                                    function ($constraint) {
-                                        $constraint->aspectRatio();
-                                    })
-                                ->save(storage_path($destinationPath.$imageName), 75);
-
-        // Create the thumb
-        $image->resize((int) $thumbWidth, null,
-                    function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                ->save(storage_path($destinationPath.'thumb_'.$imageName), 75);
     }
 
     /***************************************************************************/

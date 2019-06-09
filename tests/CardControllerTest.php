@@ -87,7 +87,7 @@ class CardControllerTest extends TestCase
           ]);
 
         $this->put('laravel-cards/1', [$request, 1])
-             ->assertStatus(302);
+            ->assertStatus(302);
     }
 
     /** @test */
@@ -163,43 +163,5 @@ class CardControllerTest extends TestCase
             ->assertViewIs('laravel-cards::cards.edit')
             ->assertViewHas('card')
             ->assertStatus(200);
-    }
-
-    /** @test */
-    public function it_uploads_an_image()
-    {
-        // Delete directory
-        //dd(Storage::directories('public/images')); // List directories
-        $directory = 'public/images/cards/';
-        Storage::deleteDirectory($directory);
-
-        // Symulate the upload
-        $local_test_file = __DIR__.'/test-files/large-avatar.png';
-        $uploadedFile = new \Illuminate\Http\UploadedFile(
-                $local_test_file,
-                'large-avatar.png',
-                'image/png',
-                null,
-                null,
-                true
-            );
-
-        // Call the function uploadImageOnServer()
-        $imageFile = $uploadedFile;
-        $imageName = $imageFile->hashName();
-        $imageSubdir = 'cards';
-        $imageWidth = '1067';
-        $thumbWidth = '690';
-
-        CardController::uploadImageOnServer($imageFile, $imageName, $imageSubdir, $imageWidth, $thumbWidth);
-
-        // Leave this lines here - they can be very useful for new tests
-        //$directory = "/";
-        //dump(Storage::allDirectories($directory));
-        //dd(Storage::allFiles($directory));
-
-        $filePath = 'public/images/'.$imageSubdir.'/'.$imageName;
-
-        Storage::assertExists($filePath);
     }
 }
