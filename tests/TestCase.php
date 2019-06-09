@@ -36,6 +36,7 @@ abstract class TestCase extends BaseTestCase
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadLaravelMigrations(['--database' => 'testbench']);
         $this->withFactories(__DIR__.'/database/factories');
+        $this->createUser();
     }
 
     protected function getPackageProviders($app)

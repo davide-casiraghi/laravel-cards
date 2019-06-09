@@ -16,9 +16,7 @@ class CardControllerTest extends TestCase
 
     /** @test */
     public function the_route_index_can_be_accessed()
-    {
-        $this->authenticateAsAdmin();
-        
+    {    
         $this->authenticateAsAdmin();
         $this->get('laravel-cards')
             ->assertViewIs('laravel-cards::cards.index')
@@ -30,7 +28,6 @@ class CardControllerTest extends TestCase
     {
         $this->authenticateAsAdmin();
         
-        $this->authenticateAsAdmin();
         $this->get('laravel-cards/create')
             ->assertViewIs('laravel-cards::cards.create')
             ->assertStatus(200);
