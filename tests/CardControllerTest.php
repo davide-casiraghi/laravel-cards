@@ -2,11 +2,9 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
-use DavideCasiraghi\LaravelCards\Http\Controllers\CardController;
 
 class CardControllerTest extends TestCase
 {
@@ -16,7 +14,7 @@ class CardControllerTest extends TestCase
 
     /** @test */
     public function the_route_index_can_be_accessed()
-    {    
+    {
         $this->authenticateAsAdmin();
         $this->get('laravel-cards')
             ->assertViewIs('laravel-cards::cards.index')
@@ -27,7 +25,7 @@ class CardControllerTest extends TestCase
     public function the_route_create_can_be_accessed()
     {
         $this->authenticateAsAdmin();
-        
+
         $this->get('laravel-cards/create')
             ->assertViewIs('laravel-cards::cards.create')
             ->assertStatus(200);
@@ -37,7 +35,7 @@ class CardControllerTest extends TestCase
     public function the_route_destroy_can_be_accessed()
     {
         $this->authenticateAsAdmin();
-        
+
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',
@@ -65,7 +63,7 @@ class CardControllerTest extends TestCase
     public function the_route_update_can_be_accessed()
     {
         $this->authenticateAsAdmin();
-        
+
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',
@@ -99,7 +97,7 @@ class CardControllerTest extends TestCase
     public function the_route_store_can_be_accessed()
     {
         $this->authenticateAsAdmin();
-        
+
         $data = [
             'image_file_name' => 'test.jpg',
             'button_url' => 'test button url',
@@ -148,7 +146,7 @@ class CardControllerTest extends TestCase
     public function the_route_edit_can_be_accessed()
     {
         $this->authenticateAsAdmin();
-        
+
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',

@@ -12,7 +12,6 @@ use DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials;
 
 class CardController extends Controller
 {
-    
     /* Restrict the access to this resource just to logged in users */
     public function __construct()
     {
