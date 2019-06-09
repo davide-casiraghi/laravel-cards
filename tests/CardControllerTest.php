@@ -36,6 +36,8 @@ class CardControllerTest extends TestCase
     /** @test */
     public function the_route_destroy_can_be_accessed()
     {
+        $this->authenticateAsAdmin();
+        
         $id = Card::insertGetId([
             'image_file_name' => 'image_test_1.jpg',
             'img_alignment' => 'right',
