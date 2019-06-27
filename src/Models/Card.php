@@ -2,9 +2,8 @@
 
 namespace DavideCasiraghi\LaravelCards\Models;
 
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 
 class Card extends Model
 {
