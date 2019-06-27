@@ -44,7 +44,7 @@ abstract class TestCase extends BaseTestCase
         return [
             LaravelCardsServiceProvider::class,
             \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
-            \Dimsav\Translatable\TranslatableServiceProvider::class,
+            \Astrotomic\Translatable\TranslatableServiceProvider::class,
             \DavideCasiraghi\LaravelFormPartials\LaravelFormPartialsServiceProvider::class,
         ];
     }
