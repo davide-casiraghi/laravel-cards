@@ -4,7 +4,7 @@
     
     <div class="row py-4">
         <div class="col-12 col-sm-9">
-            <h4>Add new jumbotron image translation</h4>
+            <h4>Add new card translation</h4>
         </div>
         <div class="col-12 col-sm-3 text-right">
             <span class="badge badge-secondary">{{$selectedLocaleName}}</span>
