@@ -42,6 +42,9 @@ You can install the package via composer:
 @import 'vendor/laravel-cards/card';
 ```
 
+and then run in console:  
+```npm run dev```  
+
 ## Usage
 
 ### Authorization
