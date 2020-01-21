@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class CardControllerTest extends TestCase
 {
@@ -85,9 +85,9 @@ class CardControllerTest extends TestCase
 
         $request = new \Illuminate\Http\Request();
         $request->replace([
-              'title' => 'test title updated',
-              'body' => 'test body updated',
-          ]);
+            'title' => 'test title updated',
+            'body' => 'test body updated',
+        ]);
 
         $this->put('laravel-cards/1', [$request, 1])
             ->assertStatus(302);

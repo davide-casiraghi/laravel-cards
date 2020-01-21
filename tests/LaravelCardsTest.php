@@ -2,8 +2,8 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
+use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
 
 class LaravelCardsTest extends TestCase
