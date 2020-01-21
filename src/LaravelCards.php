@@ -131,12 +131,12 @@ class LaravelCards
     public static function getParametersArray($card)
     {
         $ret = [
-             'img_col_size_class' => 'col-md-'.$card->img_col_size,
-             'text_col_size_class' => 'col-md-'.(12 - $card->img_col_size),
-             'bkg_color' => 'background-color: '.$card->bkg_color.';',
-             'text_color' => 'color: '.$card->text_color.';',
-             'container_wrap' => ($card->container_wrap == 'true') ? 1 : 0,
-         ];
+            'img_col_size_class' => 'col-md-'.$card->img_col_size,
+            'text_col_size_class' => 'col-md-'.(12 - $card->img_col_size),
+            'bkg_color' => 'background-color: '.$card->bkg_color.';',
+            'text_color' => 'color: '.$card->text_color.';',
+            'container_wrap' => ($card->container_wrap == 'true') ? 1 : 0,
+        ];
 
         switch ($card->img_alignment) {
              case 'left':

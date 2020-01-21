@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Illuminate\Foundation\Testing\WithFaker;
 use DavideCasiraghi\LaravelCards\Models\Card;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class CardTranslationControllerTest extends TestCase
 {
@@ -175,7 +175,7 @@ class CardTranslationControllerTest extends TestCase
             'card_id' => $id,
             'body' => 'test spanish text updated',
             'language_code' => 'es',
-         ]);
+        ]);
 
         $this->put('laravel-cards-translation/'.$translationId, [$request, $translationId])
                  ->assertStatus(302);

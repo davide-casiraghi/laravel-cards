@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\LaravelCards\Http\Controllers;
 
-use Validator;
-use Illuminate\Http\Request;
 use DavideCasiraghi\LaravelCards\Models\CardTranslation;
+use Illuminate\Http\Request;
+use Validator;
 
 class CardTranslationController extends Controller
 {

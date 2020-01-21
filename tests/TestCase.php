@@ -2,10 +2,10 @@
 
 namespace DavideCasiraghi\LaravelCards\Tests;
 
-use Illuminate\Foundation\Auth\User;
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 use DavideCasiraghi\LaravelCards\LaravelCardsServiceProvider;
+use Illuminate\Foundation\Auth\User;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -69,8 +69,8 @@ abstract class TestCase extends BaseTestCase
     public function authenticateAsAdmin()
     {
         $user = factory(User::class)->make([
-                'group' => 2,
-            ]);
+            'group' => 2,
+        ]);
 
         $this->actingAs($user);
     }
@@ -79,8 +79,8 @@ abstract class TestCase extends BaseTestCase
     public function authenticateAsSuperAdmin()
     {
         $user = factory(User::class)->make([
-                'group' => 1,
-            ]);
+            'group' => 1,
+        ]);
 
         $this->actingAs($user);
     }
