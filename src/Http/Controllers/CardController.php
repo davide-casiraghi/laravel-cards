@@ -2,13 +2,13 @@
 
 namespace DavideCasiraghi\LaravelCards\Http\Controllers;
 
+use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
+use DavideCasiraghi\LaravelCards\Models\Card;
+use DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use DavideCasiraghi\LaravelCards\Models\Card;
 use Intervention\Image\ImageManagerStatic as Image;
-use DavideCasiraghi\LaravelCards\Facades\LaravelCards;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use DavideCasiraghi\LaravelFormPartials\Facades\LaravelFormPartials;
 
 class CardController extends Controller
 {
@@ -205,27 +205,27 @@ class CardController extends Controller
     public static function getButtonColorArray()
     {
         $ret = [
-             'press-red' => 'Red',
-             'press-pink' => 'Pink',
-             'press-purple' => 'Purple',
-             'press-deeppurple' => 'Deep purple',
-             'press-indigo' => 'Indigo',
-             'press-blue' => 'Blue',
-             'press-lightblue' => 'Light blue',
-             'press-cyan' => 'Cyan',
-             'press-teal' => 'Teal',
-             'press-green' => 'Green',
-             'press-lightgreen' => 'Light green',
-             'press-lime' => 'Lime',
-             'press-yellow' => 'Yellow',
-             'press-amber' => 'Amber',
-             'press-orange' => 'Orange',
-             'press-deeporange' => 'Deeporange',
-             'press-brown' => 'Brown',
-             'press-grey' => 'Grey',
-             'press-bluegrey' => 'Blue grey',
-             'press-black' => 'Black',
-         ];
+            'press-red' => 'Red',
+            'press-pink' => 'Pink',
+            'press-purple' => 'Purple',
+            'press-deeppurple' => 'Deep purple',
+            'press-indigo' => 'Indigo',
+            'press-blue' => 'Blue',
+            'press-lightblue' => 'Light blue',
+            'press-cyan' => 'Cyan',
+            'press-teal' => 'Teal',
+            'press-green' => 'Green',
+            'press-lightgreen' => 'Light green',
+            'press-lime' => 'Lime',
+            'press-yellow' => 'Yellow',
+            'press-amber' => 'Amber',
+            'press-orange' => 'Orange',
+            'press-deeporange' => 'Deeporange',
+            'press-brown' => 'Brown',
+            'press-grey' => 'Grey',
+            'press-bluegrey' => 'Blue grey',
+            'press-black' => 'Black',
+        ];
 
         return $ret;
     }
